@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   Form,
   Input,
@@ -10,49 +10,11 @@ import {
   Checkbox,
   Button,
   AutoComplete,
-} from 'antd';
-import { QuestionCircleOutlined } from '@ant-design/icons';
-import '../../css/signUp.css'
-
-const { Option } = Select;
-const AutoCompleteOption = AutoComplete.Option;
-
-// const residences = [
-//   {
-//   // <input />
-//   // <input />
-//   //   value: 'Au',
-//   //   label: 'Au',
-//   //   children: [
-//   //     {
-//   //       value: 'QLD',
-//   //       label: 'QLD',
-//   //       children: [
-//   //         {
-//   //           value: 'Brisbane',
-//   //           label: 'Brisbane',
-//   //         },
-//   //       ],
-//   //     },
-//   //   ],
-//   // },
-//   // {
-//   //   value: 'China',
-//   //   label: 'China',
-//   //   children: [
-//   //     {
-//   //       value: 'Shandong',
-//   //       label: 'Shandong',
-//   //       children: [
-//   //         {
-//   //           value: 'Jinan',
-//   //           label: 'Jinan',
-//   //         },
-//   //       ],
-//   //     },
-//   //   ],
-//   },
-// ];
+} from "antd";
+import { QuestionCircleOutlined } from "@ant-design/icons";
+import axios from "axios";
+import { useHistory } from "react-router-dom";
+import "../../css/signUp.css";
 
 const formItemLayout = {
   labelCol: {
@@ -77,42 +39,32 @@ const tailFormItemLayout = {
   },
 };
 
-
-export default function SignUp (){
+export default function SignUp() {
+  let history = useHistory();
   const [form] = Form.useForm();
 
-  const onFinish = values => {
-    console.log('Received values of form: ', values);
+  const onFinish = (values) => {
+    // console.log('Received values of form: ', values);
+    axios.post("http://localhost:8181/user/save", values).then(function (resp) {
+      if (resp.data == "success") {
+        history.push("/home");
+      }
+    });
   };
-
-  const prefixSelector = (
-    <Form.Item name="prefix" noStyle>
-      return(
-        <input type = "text"
-        // value = {this.state.value}
-        />
-
-      )
-      
-
-         <Select style={{ width: 70 }}>
-  //       <Option value="86">+61</Option>
-  //       <Option value="87">+86</Option>
-  //     </Select>
-         </Form.Item>
-  );
 
   const [autoCompleteResult, setAutoCompleteResult] = useState([]);
 
-  const onWebsiteChange = value => {
+  const onWebsiteChange = (value) => {
     if (!value) {
       setAutoCompleteResult([]);
     } else {
-      setAutoCompleteResult(['.com', '.org', '.net'].map(domain => `${value}${domain}`));
+      setAutoCompleteResult(
+        [".com", ".org", ".net"].map((domain) => `${value}${domain}`)
+      );
     }
   };
 
-  const websiteOptions = autoCompleteResult.map(website => ({
+  const websiteOptions = autoCompleteResult.map((website) => ({
     label: website,
     value: website,
   }));
@@ -123,24 +75,24 @@ export default function SignUp (){
       form={form}
       name="register"
       onFinish={onFinish}
-      initialValues={{
-        residence: ['Au', 'QLD', 'Brisbane'],
-        prefix: '61',
-      }}
+      // initialValues={{
+      //   residence: ['Au', 'QLD', 'Brisbane'],
+      //   prefix: '61',
+      // }}
       scrollToFirstError
-      className = "signUp"
+      className="signUp"
     >
       <Form.Item
         name="email"
         label="E-mail"
         rules={[
           {
-            type: 'email',
-            message: 'The input is not valid E-mail!',
+            type: "email",
+            message: "The input is not valid E-mail!",
           },
           {
             required: true,
-            message: 'Please input your E-mail!',
+            message: "Please input your E-mail!",
           },
         ]}
       >
@@ -153,7 +105,7 @@ export default function SignUp (){
         rules={[
           {
             required: true,
-            message: 'Please input your password!',
+            message: "Please input your password!",
           },
         ]}
         hasFeedback
@@ -164,19 +116,21 @@ export default function SignUp (){
       <Form.Item
         name="confirm"
         label="Confirm Password"
-        dependencies={['password']}
+        dependencies={["password"]}
         hasFeedback
         rules={[
           {
             required: true,
-            message: 'Please confirm your password!',
+            message: "Please confirm your password!",
           },
           ({ getFieldValue }) => ({
             validator(rule, value) {
-              if (!value || getFieldValue('password') === value) {
+              if (!value || getFieldValue("password") === value) {
                 return Promise.resolve();
               }
-              return Promise.reject('The two passwords that you entered do not match!');
+              return Promise.reject(
+                "The two passwords that you entered do not match!"
+              );
             },
           }),
         ]}
@@ -188,13 +142,19 @@ export default function SignUp (){
         name="username"
         label={
           <span>
-            User Name&nbsp;
+            Username&nbsp;
             <Tooltip title="What do you want others to call you?">
               <QuestionCircleOutlined />
             </Tooltip>
           </span>
         }
-        rules={[{ required: true, message: 'Please input your nickname!', whitespace: true }]}
+        rules={[
+          {
+            required: true,
+            message: "Please input your nickname!",
+            whitespace: true,
+          },
+        ]}
       >
         <Input />
       </Form.Item>
@@ -202,29 +162,30 @@ export default function SignUp (){
       <Form.Item
         name="address"
         label="Address" //first step just try plan text, easy to combine with back-end
-        
-        rules={[
-          { required: true, message: 'Please input your address!' },
-        ]}
+        rules={[{ required: true, message: "Please input your address!" }]}
       >
-        <input style={{ width: '100%' }}/>
+        <input style={{ width: "100%" }} />
         {/* <Cascader options={residences} /> */}
       </Form.Item>
 
       <Form.Item
         name="phone"
         label="Phone Number"
-        rules={[{ required: true, message: 'Please input your phone number!' }]}
+        rules={[{ required: true, message: "Please input your phone number!" }]}
       >
-        <Input style={{ width: '100%' }} /> 
+        <Input style={{ width: "100%" }} />
       </Form.Item>
 
       <Form.Item
         name="occupation"
         label="Occupation"
-        rules={[{ required: true, message: 'Please input website!' }]}
+        rules={[{ required: true, message: "Please input website!" }]}
       >
-        <AutoComplete options={websiteOptions} onChange={onWebsiteChange} placeholder="Occupation">
+        <AutoComplete
+          options={websiteOptions}
+          onChange={onWebsiteChange}
+          placeholder="Occupation"
+        >
           <Input />
         </AutoComplete>
       </Form.Item>
@@ -250,7 +211,12 @@ export default function SignUp (){
         name="agreement"
         valuePropName="checked"
         rules={[
-          { validator:(_, value) => value ? Promise.resolve() : Promise.reject('Should accept agreement') },
+          {
+            validator: (_, value) =>
+              value
+                ? Promise.resolve()
+                : Promise.reject("Should accept agreement"),
+          },
         ]}
         {...tailFormItemLayout}
       >
@@ -265,5 +231,4 @@ export default function SignUp (){
       </Form.Item>
     </Form>
   );
-};
-
+}
