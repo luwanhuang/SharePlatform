@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 
-export default function HomeForm() {
+export default function HomeForm(props) {
   const div1 = {
     width: "900px",
     height: "800px",
@@ -9,9 +9,7 @@ export default function HomeForm() {
   };
   return (
     <Fragment>
-      <div>
-        <img src="/img/task.png" style={div1} />
-      </div>
+      <div>{props.state}</div>
     </Fragment>
   );
 }

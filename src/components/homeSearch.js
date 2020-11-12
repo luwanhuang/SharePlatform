@@ -2,6 +2,7 @@ import React, { useState, useContext, Fragment } from "react";
 import { TestContext } from "../contexts/TestContext";
 import { Input } from "antd";
 import { AudioOutlined } from "@ant-design/icons";
+import axios from "axios";
 
 const { Search } = Input;
 
@@ -19,7 +20,7 @@ const div1 = {
   minHeight: "200px",
   boxSizing: "border-box",
 };
-export default function HomeSearch() {
+export default function HomeSearch(props) {
   const { dispatch } = useContext(TestContext);
   const [keyword, setKeyword] = useState("");
   const [category, setCategory] = useState("");
@@ -27,7 +28,13 @@ export default function HomeSearch() {
     <Fragment>
       <div style={div1}>
         <br />
-        <Input placeholder="input keyword" />
+        <Input
+          placeholder="input keyword"
+          value={keyword}
+          onChange={(e) => {
+            setKeyword(e.target.value);
+          }}
+        />
         <br />
         <br />
         <Input prefix="$" suffix="AUD" />
@@ -38,7 +45,15 @@ export default function HomeSearch() {
           enterButton="Search"
           size="large"
           suffix={suffix}
-          onSearch={(value) => console.log(value)}
+          onSearch={() => {
+            let address = `http://localhost:8181/task/search/${keyword}`;
+            axios.get(address).then(function (resp) {
+              let a = resp.data;
+              let b = [{ a: "b" }, {}];
+              props.setState(b);
+              console.log(resp.data);
+            });
+          }}
         />
       </div>
     </Fragment>
