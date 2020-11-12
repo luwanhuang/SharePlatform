@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../css/postTask.css'
+import '../../css/applyTask.css'
 import { Form, Input, InputNumber, Button } from 'antd';
 
 const layout = {
@@ -18,7 +18,7 @@ const validateMessages = {
   },
 };
 
-const PostTask = () => {
+const ApplyTask = () => {
   const onFinish = values => {
     console.log(values);
   };
@@ -50,4 +50,4 @@ const PostTask = () => {
     </Form>
   );
 };
-export default PostTask;
+export default ApplyTask;

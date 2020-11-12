@@ -17,40 +17,42 @@ import '../../css/signUp.css'
 const { Option } = Select;
 const AutoCompleteOption = AutoComplete.Option;
 
-const residences = [
-  {
-    value: 'Au',
-    label: 'Au',
-    children: [
-      {
-        value: 'QLD',
-        label: 'QLD',
-        children: [
-          {
-            value: 'Brisbane',
-            label: 'Brisbane',
-          },
-        ],
-      },
-    ],
-  },
-  {
-    value: 'China',
-    label: 'China',
-    children: [
-      {
-        value: 'Shandong',
-        label: 'Shandong',
-        children: [
-          {
-            value: 'Jinan',
-            label: 'Jinan',
-          },
-        ],
-      },
-    ],
-  },
-];
+// const residences = [
+//   {
+//   // <input />
+//   // <input />
+//   //   value: 'Au',
+//   //   label: 'Au',
+//   //   children: [
+//   //     {
+//   //       value: 'QLD',
+//   //       label: 'QLD',
+//   //       children: [
+//   //         {
+//   //           value: 'Brisbane',
+//   //           label: 'Brisbane',
+//   //         },
+//   //       ],
+//   //     },
+//   //   ],
+//   // },
+//   // {
+//   //   value: 'China',
+//   //   label: 'China',
+//   //   children: [
+//   //     {
+//   //       value: 'Shandong',
+//   //       label: 'Shandong',
+//   //       children: [
+//   //         {
+//   //           value: 'Jinan',
+//   //           label: 'Jinan',
+//   //         },
+//   //       ],
+//   //     },
+//   //   ],
+//   },
+// ];
 
 const formItemLayout = {
   labelCol: {
@@ -85,11 +87,19 @@ export default function SignUp (){
 
   const prefixSelector = (
     <Form.Item name="prefix" noStyle>
-      <Select style={{ width: 70 }}>
-        <Option value="86">+61</Option>
-        <Option value="87">+86</Option>
-      </Select>
-    </Form.Item>
+      return(
+        <input type = "text"
+        // value = {this.state.value}
+        />
+
+      )
+      
+
+         <Select style={{ width: 70 }}>
+  //       <Option value="86">+61</Option>
+  //       <Option value="87">+86</Option>
+  //     </Select>
+         </Form.Item>
   );
 
   const [autoCompleteResult, setAutoCompleteResult] = useState([]);
@@ -175,10 +185,10 @@ export default function SignUp (){
       </Form.Item>
 
       <Form.Item
-        name="nickname"
+        name="username"
         label={
           <span>
-            Name&nbsp;
+            User Name&nbsp;
             <Tooltip title="What do you want others to call you?">
               <QuestionCircleOutlined />
             </Tooltip>
@@ -190,13 +200,15 @@ export default function SignUp (){
       </Form.Item>
 
       <Form.Item
-        name="residence"
-        label="Habitual Residence"
+        name="address"
+        label="Address" //first step just try plan text, easy to combine with back-end
+        
         rules={[
-          { type: 'array', required: true, message: 'Please select your habitual residence!' },
+          { required: true, message: 'Please input your address!' },
         ]}
       >
-        <Cascader options={residences} />
+        <input style={{ width: '100%' }}/>
+        {/* <Cascader options={residences} /> */}
       </Form.Item>
 
       <Form.Item
@@ -204,11 +216,11 @@ export default function SignUp (){
         label="Phone Number"
         rules={[{ required: true, message: 'Please input your phone number!' }]}
       >
-        <Input addonBefore={prefixSelector} style={{ width: '100%' }} />
+        <Input style={{ width: '100%' }} /> 
       </Form.Item>
 
       <Form.Item
-        name="Occupation"
+        name="occupation"
         label="Occupation"
         rules={[{ required: true, message: 'Please input website!' }]}
       >
@@ -217,7 +229,7 @@ export default function SignUp (){
         </AutoComplete>
       </Form.Item>
 
-      <Form.Item label="Captcha" extra="We must make sure that your are a human.">
+      {/* <Form.Item label="Captcha" extra="We must make sure that your are a human.">
         <Row gutter={8}>
           <Col span={12}>
             <Form.Item
@@ -232,7 +244,7 @@ export default function SignUp (){
             <Button>Get captcha</Button>
           </Col>
         </Row>
-      </Form.Item>
+      </Form.Item> */}
 
       <Form.Item
         name="agreement"

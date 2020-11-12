@@ -10,6 +10,7 @@ import PageTwo from "./pageTwo";
 import LogIn from "./login/login";
 import SignUp from "./signUp/SignUp";
 import PostTask from "./postTask/postTask";
+import ApplyTask from "./applyTask/applyTask";
 import Home from "./Home";
 import { isLogined } from "../utils/auth";
 import { Menu } from 'antd';
