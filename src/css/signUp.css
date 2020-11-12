@@ -1,0 +1,7 @@
+.signUp {
+    width: 680px;
+    position: relative;
+    left: 45%;
+    top: 50%;
+    transform: translate3d(-50%, 10%, 0);
+  }

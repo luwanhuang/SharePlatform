@@ -1,0 +1,16 @@
+.login-form {
+  width: 480px;
+  position: relative;
+  left: 50%;
+  top: 50%;
+  transform: translate3d(-50%, 30%, 0);
+}
+.login-form-forgot {
+    float: right;
+  }
+.ant-col-rtl .login-form-forgot {
+    float: left;
+  }
+.login-form-button {
+    width: 100%;
+  }
