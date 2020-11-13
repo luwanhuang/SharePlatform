@@ -1,35 +1,37 @@
 import {
   NavLink, useHistory
 } from "react-router-dom";
-import React, { useState,Fragment,useContext } from "react";
+import React, { useState,Fragment,useContext,useEffect } from "react";
 import { Menu } from "antd";
 import {TextContext} from './app';
-import { SettingOutlined, HomeOutlined, CloudUploadOutlined } from '@ant-design/icons';
+import { SettingOutlined, HomeOutlined, CloudUploadOutlined,LoginOutlined,UsergroupAddOutlined,FileAddOutlined } from '@ant-design/icons';
+import "../css/headerMenu.css"
 
 
 const { SubMenu } = Menu;
 
 export default function Header() {
     let str = window.location.pathname;
+    if (str == "/"||str==""){
+      str = "/home";
+    }
     let history = useHistory();
     const [state, setState] = useState(str);
+    useEffect(()=>{
+      str = window.location.pathname;
+      if (str == "/"||str==""){
+        str = "/home";
+      }
+      setState(str);
+    });
     const [name,setName] = useContext(TextContext);
     const setCookie = (key, value, day) => {
         let expires = day * 86400 * 1000; //
         let date = new Date(+new Date() + expires); //
         document.cookie = `${key}=${value};expires=${date.toUTCString()}`;
       };
-     const div1 = {
-        width: "1200px",
-        margin: "30px auto",
-        boxSizing: "border-box",
-        display: "flex",
-        fontSize: "20px"
-      };
-      const div2 = {
-        textAlign: "right"
-        
-      };
+
+
     var handleClick = (e) => {
         if(e.key == "logOut"){
             setCookie("login", "", -1);
@@ -59,20 +61,20 @@ export default function Header() {
     };
     if(name == ""){
         return(
-          <div style = {div1}>
-        <Menu style = {{flex:9, fontSize:22}} onClick={handleClick} selectedKeys={state} mode="horizontal">
-            <Menu.Item key="/home">
+          <div className = "outDiv">
+        <Menu style = {{flex:3}} key={state} onClick={handleClick} selectedKeys={state} mode="horizontal">
+            <Menu.Item icon={<HomeOutlined className="icons"/>}  key="/home">
               <NavLink to="/">Home</NavLink>
             </Menu.Item>
-            <Menu.Item key="/postTask">
+            <Menu.Item icon = {<CloudUploadOutlined className="icons"/>} key="/postTask">
               <NavLink to="/postTask">Post task</NavLink>
             </Menu.Item>
             </Menu>
-            <Menu style = {{flex:1, fontSize:22}} onClick={handleClick} selectedKeys={state} mode="horizontal">
-            <Menu.Item key="/logIn">
+            <Menu style = {{flex:1}} onClick={handleClick} selectedKeys={state} mode="horizontal">
+            <Menu.Item icon = {<LoginOutlined className="icons"/>} key="/logIn">
               <NavLink to="/logIn">LogIn</NavLink>
             </Menu.Item>
-            <Menu.Item key="/signUp">
+            <Menu.Item icon = {<UsergroupAddOutlined className="icons"/>} key="/signUp">
               <NavLink to="/signUp">SignUp</NavLink>
             </Menu.Item>
           </Menu>
@@ -82,17 +84,22 @@ export default function Header() {
         )
     }else{
         return (
-          <div style = {div1}>
-              <Menu style = {{flex:9, fontSize:22}} onClick={handleClick} selectedKeys={state} mode="horizontal">
-              <Menu.Item icon={<HomeOutlined style={{fontSize : "20px",textAlign: "center"}} />}  key="/home">
-              <NavLink to="/">Home</NavLink>
+          <div className = "outDiv">
+              <Menu className = "outMenu" key={state} style = {{flex:9}} onClick={handleClick} selectedKeys={state} mode="horizontal">
+              <Menu.Item className = "itemMenu"
+              // style={{fontSize : "20px",textAlign: "center"}}
+              icon={<HomeOutlined className="icons"/>}  key="/home">
+              <NavLink 
+              // style={{fontSize : "20px",textAlign: "center",height:"100%"}} 
+              to="/">Home</NavLink>
             </Menu.Item>
-            <Menu.Item icon = {<CloudUploadOutlined />} key="/postTask">
+            <Menu.Item icon = {<CloudUploadOutlined  className="icons"/>} key="/postTask">
               <NavLink to="/postTask">Post task</NavLink>
             </Menu.Item>
             </Menu>
-            <Menu  style = {{flex:1, fontSize:22}} onClick={handleClick} selectedKeys={state} mode="horizontal">
-            <SubMenu  key="SubMenu" icon={<SettingOutlined />} title={name}>
+            <Menu  style = {{flex:1}} onClick={handleClick} selectedKeys={state} mode="horizontal">
+            <SubMenu 
+            key="SubMenu" icon={<SettingOutlined className="icons"/>} title={name}>
           <Menu.ItemGroup title="Task">
             <Menu.Item key="posted">Posted</Menu.Item>
             <Menu.Item key="applied">Applied</Menu.Item>

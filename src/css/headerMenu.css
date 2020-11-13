@@ -1,0 +1,22 @@
+.outDiv{
+    width: 1200px;
+    display: flex;
+   flex-direction: row;
+    margin: 30px auto;
+    height: 48px;
+}
+
+.icons{
+    float: left;
+    font-size : 19px !important;
+    margin: 14px 10px;
+}
+/* #root > section > div:nth-child(1) > ul.ant-menu.ant-menu-light.outMenu.ant-menu-root.ant-menu-horizontal{
+    font-size: 22px !important;
+} */
+#root > section > div:nth-child(1) > ul:nth-child(1) {
+    font-size: 22px !important;
+}
+#root > section > div:nth-child(1) > ul:nth-child(2) {
+    font-size: 22px !important;
+}

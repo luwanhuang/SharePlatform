@@ -39,7 +39,7 @@ export default function Appsider() {
                   state: { from: 1 },
                 }}
               >
-                Unstarted Task
+                Unstarted Application
               </Link>
             </Menu.Item>
             <Menu.Item key="2" icon={<VideoCameraOutlined />}>
@@ -100,7 +100,7 @@ export default function Appsider() {
                   state: { from: 1 },
                 }}
               >
-                Unstarted Task
+                Unstarted Application
               </Link>
             </Menu.Item>
             <Menu.Item key="2" icon={<VideoCameraOutlined />}>
@@ -110,7 +110,7 @@ export default function Appsider() {
                   state: { from: 2 },
                 }}
               >
-                Ongoing Task
+                Ongoing Application
               </Link>
             </Menu.Item>
             <Menu.Item key="3" icon={<UploadOutlined />}>
@@ -120,7 +120,7 @@ export default function Appsider() {
                   state: { from: 3 },
                 }}
               >
-                Finished Task
+                Finished Application
               </Link>
             </Menu.Item>
           </Menu>
@@ -161,7 +161,7 @@ export default function Appsider() {
                   state: { from: 1 },
                 }}
               >
-                Unstarted Task
+                Unstarted Application
               </Link>
             </Menu.Item>
             <Menu.Item key="2" icon={<VideoCameraOutlined />}>
@@ -171,7 +171,7 @@ export default function Appsider() {
                   state: { from: 2 },
                 }}
               >
-                Ongoing Task
+                Ongoing Application
               </Link>
             </Menu.Item>
             <Menu.Item key="3" icon={<UploadOutlined />}>
@@ -181,7 +181,7 @@ export default function Appsider() {
                   state: { from: 3 },
                 }}
               >
-                Finished Task
+                Finished Application
               </Link>
             </Menu.Item>
           </Menu>

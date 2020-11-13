@@ -10,8 +10,8 @@ import axios from "axios";
 const { Title, Paragraph, Text, Link } = Typography;
 
 const layout = {
-  labelCol: { span: 8 },
-  wrapperCol: { span: 16 },
+  labelCol: { span: 2 },
+  wrapperCol: { span: 29 },
 };
 
 const validateMessages = {
@@ -37,17 +37,24 @@ const ApplyTask = () => {
     };
   
     return (
-      <>
+      <div className = "outDi">
+        <div>
         <Typography>
     <Title>{from.title}</Title>
+      
+      <Paragraph>
+       <b> {from.tag} </b>
+      </Paragraph>
       <Paragraph>
         {from.details}
       </Paragraph>
       <Paragraph>
-        {from.username}
+       <i> About the Employer: </i><b>{from.username}</b>
       </Paragraph>
       </Typography>
-      <Form {...layout} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages} className = "postTask">
+      </div>
+      <div>
+      <Form {...layout} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages} >
       <Form.Item
         name="applicant"
         hidden="true"
@@ -58,18 +65,19 @@ const ApplyTask = () => {
         hidden="true"
         initialValue={from.id}
       ></Form.Item>
-        <div className = "details">
+       
         <Form.Item name= 'details' className = "detail" label="Details" rules={[{ required: true }]}>
-          <Input.TextArea />
+          <Input.TextArea  />
         </Form.Item>
-        </div>
-        <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
+    
+        <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 21 }}>
           <Button type="primary" htmlType="submit">
             Submit
           </Button>
         </Form.Item>
       </Form>
-      </>
+      </div>
+      </div>
     );
   };
   }

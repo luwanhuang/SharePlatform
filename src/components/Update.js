@@ -17,7 +17,7 @@ import {TextContext} from './app';
 const formItemLayout = {
   labelCol: {
     xs: { span: 24 },
-    sm: { span: 8 },
+    sm: { span: 4 },
   },
   wrapperCol: {
     xs: { span: 24 },
@@ -143,7 +143,10 @@ export default function Update() {
       >
           <Input/>
       </Form.Item>
-      <Form.Item {...tailFormItemLayout}>
+      <Form.Item 
+      // {...tailFormItemLayout}
+      wrapperCol={{ span:4, offset: 18 }}
+      >
         <Button type="primary" htmlType="submit">
           Update
         </Button>

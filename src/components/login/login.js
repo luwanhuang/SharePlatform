@@ -3,7 +3,7 @@ import { Form, Input, Button, Checkbox, Card } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import axios from "axios";
 import "../../css/login.css";
-import { useHistory, useLocation } from "react-router-dom";
+import { useHistory, useLocation,Link } from "react-router-dom";
 import {TextContext} from '../app';
 export default function LogIn() {
   let history = useHistory();
@@ -42,7 +42,7 @@ export default function LogIn() {
     history.push(from);
   };
   return (
-    <div className="outDiv">
+    <div className="outDivLogin">
     <Card title="Share Platform Login" className="login-form">
       <Form
         name="normal_login"
@@ -89,7 +89,7 @@ export default function LogIn() {
           >
             Log in
           </Button>
-          Or <a href="">register now!</a>
+          Or <Link to="/signUp">register now!</Link>
         </Form.Item>
       </Form>
     </Card>

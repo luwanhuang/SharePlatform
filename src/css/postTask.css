@@ -3,16 +3,15 @@
   margin-top: 6%;
   height: 80%;
   display: flex;
-  margin-left: 20px;
+  /* margin-left: 20px; */
   /* margin-right: auto; */
 }
 .details{
   min-height: 400px !important;
-    color: red;
 }
 #nest-messages{
   width:450px;
-  margin-right: auto;
-  margin-left: 30px;
+  /* margin-right: auto;
+  margin-left: 30px; */
   flex:1;
 }
