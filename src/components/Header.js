@@ -30,7 +30,10 @@ export default function Header() {
         }else if(e.key == "posted"){
             // history.push("/postedTask")
             history.push("/sider")
-        }
+        }else if(e.key == "applied"){
+          // history.push("/postedTask")
+          history.push("/appsider")
+      }
       setState(e.key);
     };
     if(name == ""){

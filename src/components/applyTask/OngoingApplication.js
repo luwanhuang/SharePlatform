@@ -8,7 +8,7 @@ export default function AppliedTask() {
   const [name,setName] = useContext(TextContext);
   const [user,setUser] = useState([]);
   useEffect(() => {
-    axios.get(`http://192.168.0.6:8181/application/search/${name}`)
+    axios.get(`http://192.168.0.6:8181/ongoingTask/ongoing/${name}`)
     .then(res => {
       console.log(res.data)
         setUser(res.data);
@@ -25,7 +25,7 @@ export default function AppliedTask() {
         //   state: { from: e }
         // }}>More</Link>} 
         style={{ width: 900, margin : 10 }}>
-        <p>${e.taskid}</p>
+        <p>TaskID: {e.taskID}</p>
         <p>{e.details}</p>
       </Card>
       

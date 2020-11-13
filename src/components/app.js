@@ -18,7 +18,7 @@ import PostedTask from "./Task/PostedTask";
 import Applicants from "./Task/Applicants";
 import SiderBar from "./Task/Sider";
 import OngoingTask from "./Task/OngoingTask";
-
+import Appsider from "./applyTask/Appsider"
 
 export const TextContext = React.createContext();
 
@@ -49,6 +49,12 @@ export default function App() {
           exact
           path="/sider"
           component={SiderBar}
+
+        />
+        <PrivateRoute
+          exact
+          path="/appsider"
+          component={Appsider}
 
         />
         <PrivateRoute
