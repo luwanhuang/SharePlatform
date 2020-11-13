@@ -8,12 +8,16 @@ import {
 import React, { useState } from "react";
 import LogIn from "./login/login";
 import SignUp from "./signUp/SignUp";
-import PostTask from "./postTask/postTask";
+import PostTask from "./Task/postTask";
 import ApplyTask from "./applyTask/applyTask";
 import Home from "./Home";
 import Update from "./Update";
 import Header from "./Header";
 import PrivateRoute from "./utils/PrivateRoute";
+import PostedTask from "./Task/PostedTask";
+import Applicants from "./Task/Applicants";
+import SiderBar from "./Task/Sider";
+import OngoingTask from "./Task/OngoingTask";
 
 
 export const TextContext = React.createContext();
@@ -32,23 +36,40 @@ export default function App() {
         <Route exact path="/">
           <Home />
         </Route>
+        <Route exact path="/ongoingTask">
+          <OngoingTask />
+        </Route>
         <PrivateRoute
           exact
           path="/postTask"
           component={PostTask}
 
         />
+         <PrivateRoute
+          exact
+          path="/sider"
+          component={SiderBar}
+
+        />
         <PrivateRoute
           exact
           path="/applyTask"
           component={ApplyTask}
-
         />
         <PrivateRoute
           exact
           path="/update"
           component={Update}
-
+        />
+         <PrivateRoute
+          exact
+          path="/postedTask"
+          component={PostedTask}
+        />
+        <PrivateRoute
+          exact
+          path="/applicants"
+          component={Applicants}
         />
         <Route exact path="/logIn">
           <LogIn />

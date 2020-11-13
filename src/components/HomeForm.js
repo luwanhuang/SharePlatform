@@ -1,14 +1,10 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useContext,useState } from "react";
 import { Card } from 'antd';
 import {Link} from 'react-router-dom';
 
+
 export default function HomeForm(props) {
-  const div1 = {
-    width: "900px",
-    height: "800px",
-    display: "block",
-    margin: "0 auto",
-  };
+
   return (
     <Fragment>
       {

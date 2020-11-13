@@ -27,6 +27,9 @@ export default function Header() {
             history.push("/")
         }else if(e.key == "update"){
             history.push("/update")
+        }else if(e.key == "posted"){
+            // history.push("/postedTask")
+            history.push("/sider")
         }
       setState(e.key);
     };
