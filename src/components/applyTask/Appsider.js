@@ -28,14 +28,8 @@ export default function Appsider() {
         <Sider trigger={null} collapsible collapsed={collapsed}>
           <div className="logo" />
           <Menu
-            theme="dark"
+            theme="light"
             mode="inline"
-            // onClick = {(e)=>{
-            //   if(e.key==2){
-            //     history.push("/ongoingTask")
-            //   }
-            //   console.log(e.key);
-            // }}
             defaultSelectedKeys={["1"]}
           >
             <Menu.Item key="1" icon={<UserOutlined />}>
@@ -98,7 +92,7 @@ export default function Appsider() {
       <Layout>
         <Sider trigger={null} collapsible collapsed={collapsed}>
           <div className="logo" />
-          <Menu theme="dark" mode="inline" defaultSelectedKeys={["2"]}>
+          <Menu theme="light" mode="inline" defaultSelectedKeys={["2"]}>
             <Menu.Item key="1" icon={<UserOutlined />}>
               <Link
                 to={{
@@ -159,7 +153,7 @@ export default function Appsider() {
       <Layout>
         <Sider trigger={null} collapsible collapsed={collapsed}>
           <div className="logo" />
-          <Menu theme="dark" mode="inline" defaultSelectedKeys={["3"]}>
+          <Menu theme="light" mode="inline" defaultSelectedKeys={["3"]}>
             <Menu.Item key="1" icon={<UserOutlined />}>
               <Link
                 to={{

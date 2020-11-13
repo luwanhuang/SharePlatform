@@ -27,7 +27,7 @@ import {useHistory,useLocation,Link} from "react-router-dom";
           <Layout>
           <Sider trigger={null} collapsible collapsed={collapsed}>
             <div className="logo" />
-            <Menu theme="dark" mode="inline" 
+            <Menu theme="light" mode="inline" 
             // onClick = {(e)=>{
             //   if(e.key==2){
             //     history.push("/ongoingTask")
@@ -91,7 +91,7 @@ import {useHistory,useLocation,Link} from "react-router-dom";
           <Layout>
           <Sider trigger={null} collapsible collapsed={collapsed}>
             <div className="logo" />
-            <Menu theme="dark" mode="inline" 
+            <Menu theme="light" mode="inline" 
             defaultSelectedKeys={['2']}>
               <Menu.Item key="1" icon={<UserOutlined />}>
                 <Link to={{
@@ -149,7 +149,7 @@ import {useHistory,useLocation,Link} from "react-router-dom";
           <Layout>
           <Sider trigger={null} collapsible collapsed={collapsed}>
             <div className="logo" />
-            <Menu theme="dark" mode="inline" 
+            <Menu theme="light" mode="inline" 
             defaultSelectedKeys={['3']}>
               <Menu.Item key="1" icon={<UserOutlined />}>
                 <Link to={{

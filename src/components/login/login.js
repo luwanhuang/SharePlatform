@@ -42,6 +42,7 @@ export default function LogIn() {
     history.push(from);
   };
   return (
+    <div className="outDiv">
     <Card title="Share Platform Login" className="login-form">
       <Form
         name="normal_login"
@@ -92,5 +93,6 @@ export default function LogIn() {
         </Form.Item>
       </Form>
     </Card>
+    </div>
   );
 }

@@ -52,6 +52,7 @@ export default function SignUp() {
 
 
   return (
+    <div className = "outDiv">
     <Form
       {...formItemLayout}
       form={form}
@@ -185,5 +186,6 @@ export default function SignUp() {
         </Button>
       </Form.Item>
     </Form>
+    </div>
   );
 }

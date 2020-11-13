@@ -33,6 +33,7 @@ const PostTask = () => {
   };
 
   return (
+    <div className = "outDiv">
     <Form
       {...layout}
       name="nest-messages"
@@ -66,7 +67,7 @@ const PostTask = () => {
           label="Details"
           rules={[{ required: true }]}
         >
-          <Input.TextArea />
+          <Input.TextArea className="details" />
         </Form.Item>
       </div>
       <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
@@ -75,6 +76,7 @@ const PostTask = () => {
         </Button>
       </Form.Item>
     </Form>
+    </div>
   );
 };
 export default PostTask;

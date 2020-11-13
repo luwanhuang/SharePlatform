@@ -5,6 +5,13 @@ import axios from "axios";
 
 export default function Home(props){
     const [state, setState] = useState([])
+    const div1 = {
+        width: "900px",
+        margin: "10px auto",
+        minHeight: "200px",
+        padding: "10px",
+        boxSizing: "border-box",
+      };
     useEffect(() => {
         axios.get("http://192.168.0.6:8181/task/findAll")
         .then(res => 
@@ -14,9 +21,9 @@ export default function Home(props){
         )
         }, [])
     return (
-        <Fragment>
+        <div style = {div1}>
                 <HomeSearch setState = {setState}/>
                 <HomeForm state = {state} />
-        </Fragment>
+        </div>
     )
 }

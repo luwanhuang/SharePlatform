@@ -1,5 +1,5 @@
 #components-layout-demo-custom-trigger .trigger {
-  font-size: 18px;
+  font-size: 22px;
   line-height: 64px;
   padding: 0 24px;
   cursor: pointer;
@@ -17,5 +17,15 @@
 }
 
 .site-layout .site-layout-background {
+  background: #fff;
+}
+.site-layout {
+  width:100%;
+  height:calc(100vh - 64px); 
+}
+.ant-menu{
+  font-size: 18px !important;
+}
+.ant-layout-sider-children{
   background: #fff;
 }

@@ -19,6 +19,8 @@ import Applicants from "./Task/Applicants";
 import SiderBar from "./Task/Sider";
 import OngoingTask from "./Task/OngoingTask";
 import Appsider from "./applyTask/Appsider"
+import '../css/app.css'
+import { Layout } from "antd";
 
 export const TextContext = React.createContext();
 
@@ -28,7 +30,8 @@ export default function App() {
     tem = document.cookie.split("; ").filter(e=>e.includes("username"))[0].split("=")[1];
   }
   return (
-    <Router>
+    <Layout className = "app-layout">
+    <Router >
       <TextContext.Provider value={useState(tem)}>
       <Header/>
       <Switch>
@@ -86,5 +89,6 @@ export default function App() {
       </Switch>
       </TextContext.Provider>
     </Router>
+    </Layout>
   );
 }

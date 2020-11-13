@@ -15,17 +15,16 @@ const suffix = (
 );
 const div1 = {
   width: "900px",
-  margin: "30px auto",
-  minHeight: "200px",
+  margin: "20px auto",
+  // minHeight: "200px",
   boxSizing: "border-box",
 };
 export default function HomeSearch(props) {
   const [keyword, setKeyword] = useState("");
   const [category, setCategory] = useState("");
   return (
-    <Fragment>
       <div style={div1}>
-        <br />
+        {/* <br />
         <Input
           placeholder="input keyword"
           value={keyword}
@@ -37,12 +36,16 @@ export default function HomeSearch(props) {
         <br />
         <Input prefix="$" suffix="AUD" />
         <br />
-        <br />
+        <br /> */}
         <Search
-          placeholder="Category"
+          placeholder="Input keyword"
           enterButton="Search"
           size="large"
           suffix={suffix}
+          value={keyword}
+          onChange={(e) => {
+            setKeyword(e.target.value);
+          }}
           onSearch={() => {
             let address = `http://192.168.0.6:8181/task/search/${keyword}`;
             axios.get(address).then(function (resp) {
@@ -53,6 +56,5 @@ export default function HomeSearch(props) {
           }}
         />
       </div>
-    </Fragment>
   );
 }

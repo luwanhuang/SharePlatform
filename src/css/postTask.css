@@ -1,11 +1,18 @@
-.postTask {
-    width: 680px;
-    position: relative;
-    left: 45%;
-    top: 50%;
-    transform: translate3d(-50%, 10%, 0);
-  }
-#details{
-    height: 600px;
+.outDiv{
+  width: 900px;
+  margin-top: 6%;
+  height: 80%;
+  display: flex;
+  margin-left: 20px;
+  /* margin-right: auto; */
+}
+.details{
+  min-height: 400px !important;
     color: red;
+}
+#nest-messages{
+  width:450px;
+  margin-right: auto;
+  margin-left: 30px;
+  flex:1;
 }
