@@ -1,14 +1,17 @@
-import React from "react";
+import React, {useState} from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import Example from "./components/app";
+import App from "./components/app";
 import "bootstrap/dist/css/bootstrap.min.css";
 import 'antd/dist/antd.css';
 
 
+
 ReactDOM.render(
   <React.StrictMode>
-    <Example />
+    
+    <App />
+    
   </React.StrictMode>,
   document.getElementById("root")
 );

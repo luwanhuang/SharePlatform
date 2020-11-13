@@ -6,40 +6,29 @@ import {
   NavLink,
 } from "react-router-dom";
 import React, { useState } from "react";
-import PageTwo from "./pageTwo";
 import LogIn from "./login/login";
 import SignUp from "./signUp/SignUp";
 import PostTask from "./postTask/postTask";
 import ApplyTask from "./applyTask/applyTask";
 import Home from "./Home";
+import Update from "./Update";
+import Header from "./Header";
 import PrivateRoute from "./utils/PrivateRoute";
-import { Menu } from "antd";
 
-export default function Example() {
-  let str = window.location.pathname;
-  const [state, setState] = useState(str);
-  const [username, setUsername] = useState("");
-  console.log(str);
-  var handleClick = (e) => {
-    setState(e.key);
-  };
+
+export const TextContext = React.createContext();
+
+export default function App() {
+  var tem = ""
+  if(document.cookie.includes("username")){
+    tem = document.cookie.split("; ").filter(e=>e.includes("username"))[0].split("=")[1];
+  }
   return (
     <Router>
-      <Menu onClick={handleClick} selectedKeys={state} mode="horizontal">
-        <Menu.Item key="/home">
-          <NavLink to="/">Home</NavLink>
-        </Menu.Item>
-        <Menu.Item key="/postTask">
-          <NavLink to="/postTask">Post task</NavLink>
-        </Menu.Item>
-        <Menu.Item key="/logIn">
-          <NavLink to="/logIn">LogIn</NavLink>
-        </Menu.Item>
-        <Menu.Item key="/signUp">
-          <NavLink to="/signUp">SignUp</NavLink>
-        </Menu.Item>
-      </Menu>
+      <TextContext.Provider value={useState(tem)}>
+      <Header/>
       <Switch>
+      
         <Route exact path="/">
           <Home />
         </Route>
@@ -47,15 +36,28 @@ export default function Example() {
           exact
           path="/postTask"
           component={PostTask}
-          username={username}
+
+        />
+        <PrivateRoute
+          exact
+          path="/applyTask"
+          component={ApplyTask}
+
+        />
+        <PrivateRoute
+          exact
+          path="/update"
+          component={Update}
+
         />
         <Route exact path="/logIn">
-          <LogIn setUsername={setUsername} />
+          <LogIn />
         </Route>
         <Route exact path="/signUp">
           <SignUp />
         </Route>
       </Switch>
+      </TextContext.Provider>
     </Router>
   );
 }

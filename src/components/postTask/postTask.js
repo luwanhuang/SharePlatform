@@ -1,8 +1,9 @@
-import React from "react";
+import React,{useContext} from "react";
 import "../../css/postTask.css";
 import { Form, Input, InputNumber, Button } from "antd";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
+import {TextContext} from '../app';
 
 const layout = {
   labelCol: { span: 8 },
@@ -20,11 +21,11 @@ const validateMessages = {
   },
 };
 
-const PostTask = (props) => {
+const PostTask = () => {
   let history = useHistory();
+  const [name,setName] = useContext(TextContext);
   const onFinish = (values) => {
-    console.log(values);
-    axios.post("http://localhost:8181/task/save", values).then(function (resp) {
+    axios.post("http://192.168.0.6:8181/task/save", values).then(function (resp) {
       if (resp.data == "success") {
         history.push("/");
       }
@@ -46,7 +47,7 @@ const PostTask = (props) => {
       <Form.Item
         name="username"
         hidden="true"
-        initialValue={props.username}
+        initialValue={name}
       ></Form.Item>
       {/* </span> */}
       {/* <Form.Item name= 'deadline' label="Deadline" rules={[{ required: true }]}>

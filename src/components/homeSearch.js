@@ -1,5 +1,4 @@
 import React, { useState, useContext, Fragment } from "react";
-import { TestContext } from "../contexts/TestContext";
 import { Input } from "antd";
 import { AudioOutlined } from "@ant-design/icons";
 import axios from "axios";
@@ -21,7 +20,6 @@ const div1 = {
   boxSizing: "border-box",
 };
 export default function HomeSearch(props) {
-  const { dispatch } = useContext(TestContext);
   const [keyword, setKeyword] = useState("");
   const [category, setCategory] = useState("");
   return (
@@ -46,12 +44,11 @@ export default function HomeSearch(props) {
           size="large"
           suffix={suffix}
           onSearch={() => {
-            let address = `http://localhost:8181/task/search/${keyword}`;
+            let address = `http://192.168.0.6:8181/task/search/${keyword}`;
             axios.get(address).then(function (resp) {
-              let a = resp.data;
-              let b = [{ a: "b" }, {}];
-              props.setState(b);
-              console.log(resp.data);
+              // let a = resp.json();
+              // console.log(resp)
+              props.setState(resp.data);
             });
           }}
         />

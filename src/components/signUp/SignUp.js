@@ -3,10 +3,6 @@ import {
   Form,
   Input,
   Tooltip,
-  Cascader,
-  Select,
-  Row,
-  Col,
   Checkbox,
   Button,
   AutoComplete,
@@ -45,29 +41,15 @@ export default function SignUp() {
 
   const onFinish = (values) => {
     // console.log('Received values of form: ', values);
-    axios.post("http://localhost:8181/user/save", values).then(function (resp) {
-      if (resp.data == "success") {
-        history.push("/home");
-      }
-    });
+    axios
+      .post("http://192.168.0.6:8181/user/save", values)
+      .then(function (resp) {
+        if (resp.data == "success") {
+          history.push("/home");
+        }
+      });
   };
 
-  const [autoCompleteResult, setAutoCompleteResult] = useState([]);
-
-  const onWebsiteChange = (value) => {
-    if (!value) {
-      setAutoCompleteResult([]);
-    } else {
-      setAutoCompleteResult(
-        [".com", ".org", ".net"].map((domain) => `${value}${domain}`)
-      );
-    }
-  };
-
-  const websiteOptions = autoCompleteResult.map((website) => ({
-    label: website,
-    value: website,
-  }));
 
   return (
     <Form
@@ -75,10 +57,6 @@ export default function SignUp() {
       form={form}
       name="register"
       onFinish={onFinish}
-      // initialValues={{
-      //   residence: ['Au', 'QLD', 'Brisbane'],
-      //   prefix: '61',
-      // }}
       scrollToFirstError
       className="signUp"
     >
@@ -164,7 +142,7 @@ export default function SignUp() {
         label="Address" //first step just try plan text, easy to combine with back-end
         rules={[{ required: true, message: "Please input your address!" }]}
       >
-        <input style={{ width: "100%" }} />
+        <Input style={{ width: "100%" }} />
         {/* <Cascader options={residences} /> */}
       </Form.Item>
 
@@ -179,15 +157,9 @@ export default function SignUp() {
       <Form.Item
         name="occupation"
         label="Occupation"
-        rules={[{ required: true, message: "Please input website!" }]}
+        rules={[{ required: true, message: "Please input occupation!" }]}
       >
-        <AutoComplete
-          options={websiteOptions}
-          onChange={onWebsiteChange}
-          placeholder="Occupation"
-        >
           <Input />
-        </AutoComplete>
       </Form.Item>
 
       {/* <Form.Item label="Captcha" extra="We must make sure that your are a human.">

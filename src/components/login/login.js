@@ -1,30 +1,33 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, useContext } from "react";
 import { Form, Input, Button, Checkbox, Card } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import axios from "axios";
 import "../../css/login.css";
 import { useHistory, useLocation } from "react-router-dom";
-export default function LogIn(props) {
+import {TextContext} from '../app';
+export default function LogIn() {
   let history = useHistory();
   let location = useLocation();
 
   const [show, setShow] = useState("none");
+  const [name,setName] = useContext(TextContext);
 
   const onFinish = (values) => {
     // console.log('Received values of form: ', values);
     axios
-      .post("http://localhost:8181/user/login", values)
+      .post("http://192.168.0.6:8181/user/login", values)
       .then(function (resp) {
         if (resp.data == "error") {
           setCookie("login", "", -1);
           setCookie("username", "", -1);
           setShow("block");
+          setName("");
           // onFinishFailed(resp);
         } else {
           setCookie("login", true, 15);
           setCookie("username", resp.data, 15);
           console.log(resp.data);
-          props.setUsername(resp.data);
+          setName(resp.data);
           jumpBack();
         }
       });
