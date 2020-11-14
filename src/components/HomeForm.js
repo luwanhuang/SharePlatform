@@ -42,7 +42,7 @@ export default function HomeForm(props) {
       setResult(res.data.content);
     });
     axios.get("http://192.168.0.6:8181/task/showTotal").then((res) => {
-      setTemData(res.data);
+      setTemTotal(res.data);
       setTotalRes(res.data);
     });
   }, []);
