@@ -1,7 +1,9 @@
-import React from "react";
+import React,{useContext} from "react";
 import { Route, Redirect } from "react-router-dom";
+import { PathContext } from "../app";
 // this component will return a route depend on whether login
 const PrivateRoute = ({ component: Component, ...props }) => {
+  const [path,setPath] = useContext(PathContext);
   return (
     <Route
       {...props}
@@ -13,10 +15,11 @@ const PrivateRoute = ({ component: Component, ...props }) => {
         } else {
           // if not, go to login
           alert("You have not login yet, please login!");
+          setPath("/logIn")
           return (
             <Redirect
               to={{
-                pathname: "/login",
+                pathname: "/logIn",
                 state: {
                   from: p.location.pathname,
                 },

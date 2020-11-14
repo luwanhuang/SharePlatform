@@ -3,7 +3,7 @@ import {
 } from "react-router-dom";
 import React, { useState,Fragment,useContext,useEffect } from "react";
 import { Menu } from "antd";
-import {TextContext} from './app';
+import {TextContext, PathContext} from './app';
 import { SettingOutlined, HomeOutlined, CloudUploadOutlined,LoginOutlined,UsergroupAddOutlined,FileAddOutlined } from '@ant-design/icons';
 import "../css/headerMenu.css"
 
@@ -11,20 +11,22 @@ import "../css/headerMenu.css"
 const { SubMenu } = Menu;
 
 export default function Header() {
-    let str = window.location.pathname;
-    if (str == "/"||str==""){
-      str = "/home";
-    }
+  const [name,setName] = useContext(TextContext);
+  const [state,setState] = useContext(PathContext);
+    // let str = window.location.pathname;
+    // if (str == "/"||str==""){
+    //   str = "/home";
+    // }
     let history = useHistory();
-    const [state, setState] = useState(str);
     useEffect(()=>{
-      str = window.location.pathname;
+      let str = window.location.pathname;
       if (str == "/"||str==""){
         str = "/home";
       }
+      console.log(str);
       setState(str);
     });
-    const [name,setName] = useContext(TextContext);
+
     const setCookie = (key, value, day) => {
         let expires = day * 86400 * 1000; //
         let date = new Date(+new Date() + expires); //

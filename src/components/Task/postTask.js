@@ -3,7 +3,7 @@ import "../../css/postTask.css";
 import { Form, Input, InputNumber, Button } from "antd";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
-import {TextContext} from '../app';
+import {TextContext, PathContext} from '../app';
 
 const layout = {
   labelCol: {
@@ -30,9 +30,11 @@ const validateMessages = {
 const PostTask = () => {
   let history = useHistory();
   const [name,setName] = useContext(TextContext);
+  const [path,setPath] = useContext(PathContext);
   const onFinish = (values) => {
     axios.post("http://192.168.0.6:8181/task/save", values).then(function (resp) {
       if (resp.data == "success") {
+        setPath("/home")
         history.push("/");
       }
     });

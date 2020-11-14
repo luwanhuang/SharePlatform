@@ -23,9 +23,11 @@ import '../css/app.css'
 import { Layout } from "antd";
 
 export const TextContext = React.createContext();
+export const PathContext = React.createContext();
 
 export default function App() {
   var tem = ""
+  var temp = "/"
   if(document.cookie.includes("username")){
     tem = document.cookie.split("; ").filter(e=>e.includes("username"))[0].split("=")[1];
   }
@@ -33,6 +35,7 @@ export default function App() {
     <Layout className = "app-layout">
     <Router >
       <TextContext.Provider value={useState(tem)}>
+      <PathContext.Provider value={useState(temp)}>
       <Header/>
       <Switch>
       
@@ -87,6 +90,8 @@ export default function App() {
           <SignUp />
         </Route>
       </Switch>
+      
+      </PathContext.Provider>
       </TextContext.Provider>
     </Router>
     </Layout>

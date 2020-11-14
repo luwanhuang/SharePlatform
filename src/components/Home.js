@@ -1,10 +1,13 @@
-import React, { Fragment, useState, useEffect } from 'react'
+import React, { Fragment, useState, useEffect, useContext } from 'react'
 import HomeSearch from './homeSearch'
 import HomeForm from './HomeForm'
 import axios from "axios";
+import { PathContext } from "./app";
 
 export default function Home(props){
-    const [state, setState] = useState([])
+    const [path,setPath] = useContext(PathContext);
+    setPath("/home")
+    const [state, setState] = useState("")
     const div1 = {
         width: "900px",
         margin: "10px auto",
@@ -12,14 +15,7 @@ export default function Home(props){
         padding: "10px",
         boxSizing: "border-box",
       };
-    useEffect(() => {
-        axios.get("http://192.168.0.6:8181/task/findAll")
-        .then(res => 
-            // res.data.map(e => ({id:e.id, title: e.title}))
-            
-            setState(res.data)
-        )
-        }, [])
+
     return (
         <div style = {div1}>
                 <HomeSearch setState = {setState}/>

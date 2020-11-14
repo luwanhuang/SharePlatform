@@ -1,4 +1,4 @@
-import React, { useState, useContext, Fragment } from "react";
+import React, { useState, useContext, Fragment, useEffect } from "react";
 import { Input } from "antd";
 import { AudioOutlined } from "@ant-design/icons";
 import axios from "axios";
@@ -21,10 +21,11 @@ const div1 = {
 };
 export default function HomeSearch(props) {
   const [keyword, setKeyword] = useState("");
-  const [category, setCategory] = useState("");
+  // const [category, setCategory] = useState("");
+
   return (
-      <div style={div1}>
-        {/* <br />
+    <div style={div1}>
+      {/* <br />
         <Input
           placeholder="input keyword"
           value={keyword}
@@ -37,24 +38,25 @@ export default function HomeSearch(props) {
         <Input prefix="$" suffix="AUD" />
         <br />
         <br /> */}
-        <Search
-          placeholder="Input keyword"
-          enterButton="Search"
-          size="large"
-          suffix={suffix}
-          value={keyword}
-          onChange={(e) => {
-            setKeyword(e.target.value);
-          }}
-          onSearch={() => {
-            let address = `http://192.168.0.6:8181/task/search/${keyword}`;
-            axios.get(address).then(function (resp) {
-              // let a = resp.json();
-              // console.log(resp)
-              props.setState(resp.data);
-            });
-          }}
-        />
-      </div>
+      <Search
+        placeholder="Input keyword"
+        enterButton="Search"
+        size="large"
+        suffix={suffix}
+        value={keyword}
+        onChange={(e) => {
+          setKeyword(e.target.value);
+        }}
+        onSearch={() => {
+          // let address = `http://192.168.0.6:8181/task/search/${keyword}`;
+          // axios.get(address).then(function (resp) {
+          //   // let a = resp.json();
+          //   // console.log(resp)
+          //   props.setState(resp.data);
+          // });
+          props.setState(keyword);
+        }}
+      />
+    </div>
   );
 }

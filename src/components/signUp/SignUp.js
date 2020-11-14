@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Form, Input, Tooltip, Checkbox, Button, AutoComplete } from "antd";
 import { QuestionCircleOutlined } from "@ant-design/icons";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import "../../css/signUp.css";
-import {TextContext} from '../app';
+import { TextContext,PathContext } from "../app";
 
 const formItemLayout = {
   labelCol: {
@@ -30,6 +30,13 @@ const tailFormItemLayout = {
 };
 
 export default function SignUp() {
+  const [name, setName] = useContext(TextContext);
+  const [path,setPath] = useContext(PathContext);
+  const setCookie = (key, value, day) => {
+    let expires = day * 86400 * 1000; //
+    let date = new Date(+new Date() + expires); //
+    document.cookie = `${key}=${value};expires=${date.toUTCString()}`;
+  };
   let history = useHistory();
   const [form] = Form.useForm();
 
@@ -45,6 +52,11 @@ export default function SignUp() {
           window.location.reload();
         } else {
           alert("congratulations!");
+          setCookie("login", true, 15);
+          setCookie("username", resp.data, 15);
+          // console.log(resp.data);
+          setName(resp.data);
+          setPath("/home")
           history.push("/");
         }
       });

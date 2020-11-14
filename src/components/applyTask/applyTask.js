@@ -3,7 +3,7 @@ import '../../css/applyTask.css'
 import { Form, Input, InputNumber, Button } from 'antd';
 import { useHistory, useLocation } from "react-router-dom";
 import { Typography, Divider } from 'antd';
-import {TextContext} from '../app';
+import {TextContext,PathContext} from '../app';
 import axios from "axios";
 
 
@@ -19,7 +19,9 @@ const validateMessages = {
 };
 
 const ApplyTask = () => {
+  
   const [name,setName] = useContext(TextContext);
+  const [path,setPath] = useContext(PathContext);
   let history = useHistory();
   let location = useLocation();
   
@@ -28,6 +30,7 @@ const ApplyTask = () => {
     return null;
   }else{
     let { from } = location.state;
+    setPath("/applyTask");
     const onFinish = values => {
       axios.post("http://192.168.0.6:8181/application/save", values).then(function (resp) {
         if (resp.data == "success") {
