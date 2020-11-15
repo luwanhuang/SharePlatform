@@ -29,3 +29,12 @@
 .ant-layout-sider-children{
   background: #fff;
 }
+.outHeader{
+  display: flex;
+}
+.tog{
+  flex:1
+}
+.search{
+  flex:18
+}

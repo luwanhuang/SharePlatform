@@ -1,1 +1,30 @@
-/* .ant-card  */
+.homeFormD {
+  width: 900px;
+  margin: 50px auto;
+  box-sizing: border-box;
+  height: 1000px;
+}
+.cards {
+  width: 900px;
+  margin-top: 20px;
+  height: 303px;
+}
+.paginationD {
+  margin-top: 50px;
+}
+@media only screen and (max-height: 1080px) {
+    .homeFormD {
+      width: 900px;
+      margin: 20px auto;
+      box-sizing: border-box;
+      height: 750px;
+    }
+    .paginationD {
+        margin-top: 10px;
+      }
+      .cards {
+        width: 900px;
+        margin-top: 10px;
+        height: 237px;
+      }
+}

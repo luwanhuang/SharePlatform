@@ -7,11 +7,11 @@ import {
 } from "react-router-dom";
 import React, { useState } from "react";
 import LogIn from "./login/login";
-import SignUp from "./signUp/SignUp";
+import SignUp from "./login/SignUp";
 import PostTask from "./Task/postTask";
 import ApplyTask from "./applyTask/applyTask";
-import Home from "./Home";
-import Update from "./Update";
+import Home from "./home/Home";
+import Update from "./login/Update";
 import Header from "./Header";
 import PrivateRoute from "./utils/PrivateRoute";
 import PostedTask from "./Task/PostedTask";

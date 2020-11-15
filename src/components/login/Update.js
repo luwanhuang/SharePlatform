@@ -10,8 +10,8 @@ import {
 import { QuestionCircleOutlined } from "@ant-design/icons";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-import "../css/signUp.css";
-import {TextContext} from './app';
+import "../../css/signUp.css";
+import {TextContext} from '../app';
 
 
 const formItemLayout = {

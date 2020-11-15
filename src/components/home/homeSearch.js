@@ -2,6 +2,7 @@ import React, { useState, useContext, Fragment, useEffect } from "react";
 import { Input } from "antd";
 import { AudioOutlined } from "@ant-design/icons";
 import axios from "axios";
+import "../../css/homeSearch.css";
 
 const { Search } = Input;
 
@@ -13,18 +14,12 @@ const suffix = (
     }}
   />
 );
-const div1 = {
-  width: "900px",
-  margin: "20px auto",
-  // minHeight: "200px",
-  boxSizing: "border-box",
-};
 export default function HomeSearch(props) {
   const [keyword, setKeyword] = useState("");
   // const [category, setCategory] = useState("");
 
   return (
-    <div style={div1}>
+    <div className = "SearchDiv" >
       {/* <br />
         <Input
           placeholder="input keyword"

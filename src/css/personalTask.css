@@ -1,0 +1,22 @@
+
+.pPaginationD {
+    margin-top: 30px;
+  }
+  .personalCardsD {
+    height: 935px;
+    margin-top: 10px;
+  }
+
+
+  @media only screen and (max-height: 1080px) {
+    /* .personalCardsD {
+      height: 590px;
+    } */
+    .pPaginationD {
+      margin-top: 20px;
+    }
+    .personalCardsD {
+      height: 645px;
+      margin-top: 10px;
+    }
+}

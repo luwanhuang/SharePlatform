@@ -40,7 +40,7 @@ export default function Applicants() {
                         )
                         .then((res) => {
                           if (res.data == "success") {
-                            window.location.reload();
+                            history.push("/sider");
                           } else {
                             alert("something is wrong");
                             window.location.reload();

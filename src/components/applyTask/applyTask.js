@@ -38,7 +38,7 @@ const ApplyTask = () => {
         }
       });
     };
-  
+    const flag = name==from.username?true:false;
     return (
       <div className = "outDi">
         <div>
@@ -57,7 +57,9 @@ const ApplyTask = () => {
       </Typography>
       </div>
       <div>
-      <Form {...layout} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages} >
+      <Form {...layout} name="nest-messages" 
+      hidden = {flag}
+      onFinish={onFinish} validateMessages={validateMessages} >
       <Form.Item
         name="applicant"
         hidden="true"

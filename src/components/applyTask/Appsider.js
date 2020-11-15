@@ -11,68 +11,83 @@ import "../../css/sider.css";
 import AppliedTask from "./appliedTask";
 import OngoingApplication from "./OngoingApplication";
 import FinishedApplication from "./FinishedApplication";
+import PSearch from "../Task/search"
 import { useHistory, useLocation, Link } from "react-router-dom";
 
 const { Header, Sider, Content } = Layout;
 
-export default function Appsider() {
+export default function SiderBar() {
   let history = useHistory();
   let location = useLocation();
+  const [state, setState] = useState("")
   const [collapsed, setCollapsed] = useState(false);
+  const siderHeight = window.innerHeight<1100? "868px":"1185px";
+  // const contentHeight = window.innerHeight<1100? "630px":"1180px";
   const toggle = () => {
     setCollapsed((collapsed) => !collapsed);
   };
   if (location.state == null || location.state.from == 1) {
     return (
-      <Layout>
-        <Sider trigger={null} collapsible collapsed={collapsed}>
+      <Layout style = {{height:siderHeight}}>
+        <Sider 
+        // style = {{height:siderHeight}}
+        trigger={null} collapsible collapsed={collapsed}>
           <div className="logo" />
           <Menu
             theme="light"
             mode="inline"
+            // onClick = {(e)=>{
+            //   if(e.key==2){
+            //     history.push("/ongoingTask")
+            //   }
+            //   console.log(e.key);
+            // }}
             defaultSelectedKeys={["1"]}
           >
             <Menu.Item key="1" icon={<UserOutlined />}>
               <Link
                 to={{
-                  pathname: "/appsider",
+                  pathname: "/appSider",
                   state: { from: 1 },
                 }}
               >
-                Unstarted Application
+                Unstarted Job
               </Link>
             </Menu.Item>
             <Menu.Item key="2" icon={<VideoCameraOutlined />}>
               <Link
                 to={{
-                  pathname: "/appsider",
+                  pathname: "/appSider",
                   state: { from: 2 },
                 }}
               >
-                Ongoing Application
+                Ongoing Job
               </Link>
             </Menu.Item>
             <Menu.Item key="3" icon={<UploadOutlined />}>
               <Link
                 to={{
-                  pathname: "/appsider",
+                  pathname: "/appSider",
                   state: { from: 3 },
                 }}
               >
-                Finished Application
+                Finished Job
               </Link>
             </Menu.Item>
           </Menu>
         </Sider>
-        <Layout className="site-layout">
+        <Layout className="site-layout" style = {{height:siderHeight}}>
           <Header className="site-layout-background" style={{ padding: 0 }}>
-            {React.createElement(
+            <div className = "outHeader">
+              <div className="tog">{React.createElement(
               collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
               {
                 className: "trigger",
                 onClick: toggle,
               }
-            )}
+            )}</div>
+              <div className = "search"><PSearch setState = {setState}/></div>
+            </div>
           </Header>
           <Content
             className="site-layout-background"
@@ -82,58 +97,61 @@ export default function Appsider() {
               minHeight: 280,
             }}
           >
-            <AppliedTask />
+            <AppliedTask state = {state}/>
           </Content>
         </Layout>
       </Layout>
     );
   } else if (location.state.from == 2) {
     return (
-      <Layout>
+      <Layout style = {{height:siderHeight}}>
         <Sider trigger={null} collapsible collapsed={collapsed}>
           <div className="logo" />
           <Menu theme="light" mode="inline" defaultSelectedKeys={["2"]}>
             <Menu.Item key="1" icon={<UserOutlined />}>
               <Link
                 to={{
-                  pathname: "/appsider",
+                  pathname: "/appSider",
                   state: { from: 1 },
                 }}
               >
-                Unstarted Application
+                Unstarted Job
               </Link>
             </Menu.Item>
             <Menu.Item key="2" icon={<VideoCameraOutlined />}>
               <Link
                 to={{
-                  pathname: "/appsider",
+                  pathname: "/appSider",
                   state: { from: 2 },
                 }}
               >
-                Ongoing Application
+                Ongoing Job
               </Link>
             </Menu.Item>
             <Menu.Item key="3" icon={<UploadOutlined />}>
               <Link
                 to={{
-                  pathname: "/appsider",
+                  pathname: "/appSider",
                   state: { from: 3 },
                 }}
               >
-                Finished Application
+                Finished Job
               </Link>
             </Menu.Item>
           </Menu>
         </Sider>
-        <Layout className="site-layout">
+        <Layout className="site-layout" style = {{height:siderHeight}}>
           <Header className="site-layout-background" style={{ padding: 0 }}>
-            {React.createElement(
+          <div className = "outHeader">
+              <div className="tog">{React.createElement(
               collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
               {
                 className: "trigger",
                 onClick: toggle,
               }
-            )}
+            )}</div>
+              <div className = "search"><PSearch setState = {setState}/></div>
+            </div>
           </Header>
           <Content
             className="site-layout-background"
@@ -143,58 +161,61 @@ export default function Appsider() {
               minHeight: 280,
             }}
           >
-            <OngoingApplication />
+            <OngoingApplication state = {state}/>
           </Content>
         </Layout>
       </Layout>
     );
   } else {
     return (
-      <Layout>
+      <Layout style = {{height:siderHeight}}>
         <Sider trigger={null} collapsible collapsed={collapsed}>
           <div className="logo" />
           <Menu theme="light" mode="inline" defaultSelectedKeys={["3"]}>
             <Menu.Item key="1" icon={<UserOutlined />}>
               <Link
                 to={{
-                  pathname: "/appsider",
+                  pathname: "/appSider",
                   state: { from: 1 },
                 }}
               >
-                Unstarted Application
+                Unstarted Job
               </Link>
             </Menu.Item>
             <Menu.Item key="2" icon={<VideoCameraOutlined />}>
               <Link
                 to={{
-                  pathname: "/appsider",
+                  pathname: "/appSider",
                   state: { from: 2 },
                 }}
               >
-                Ongoing Application
+                Ongoing Job
               </Link>
             </Menu.Item>
             <Menu.Item key="3" icon={<UploadOutlined />}>
               <Link
                 to={{
-                  pathname: "/appsider",
+                  pathname: "/appSider",
                   state: { from: 3 },
                 }}
               >
-                Finished Application
+                Finished Job
               </Link>
             </Menu.Item>
           </Menu>
         </Sider>
-        <Layout className="site-layout">
+        <Layout className="site-layout" style = {{height:siderHeight}}>
           <Header className="site-layout-background" style={{ padding: 0 }}>
-            {React.createElement(
+          <div className = "outHeader">
+              <div className="tog">{React.createElement(
               collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
               {
                 className: "trigger",
                 onClick: toggle,
               }
-            )}
+            )}</div>
+              <div className = "search"><PSearch setState = {setState}/></div>
+            </div>
           </Header>
           <Content
             className="site-layout-background"
@@ -204,7 +225,7 @@ export default function Appsider() {
               minHeight: 280,
             }}
           >
-            <FinishedApplication />
+            <FinishedApplication state = {state}/>
           </Content>
         </Layout>
       </Layout>

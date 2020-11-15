@@ -1,0 +1,12 @@
+.SearchDiv{
+    width: 900px;
+    margin: 20px auto;
+    box-sizing: border-box;
+}
+@media only screen and (max-height:1080px){
+    .SearchDiv{
+        width: 900px;
+        margin: 0px auto;
+        box-sizing: border-box;
+    }
+}

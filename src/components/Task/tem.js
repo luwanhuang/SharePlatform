@@ -18,7 +18,7 @@ export default function FinishedApplication(props) {
   useEffect(() => {
     if (props.state != "") {
       axios
-        .get(`http://localhost:8181/finishedApplication/finishedJobSearch/1/${size}/${name}/${props.state}`)
+        .get(`http://localhost:8181/finishedApplication/finishedJobSearch/1/${lenth}/${name}/${props.state}`)
         .then(function (resp) {
           setResult(resp.data);
         });
@@ -33,7 +33,7 @@ export default function FinishedApplication(props) {
     }
   }, [props.state]);
   useEffect(() => {
-    axios.get(`http://192.168.0.6:8181/finishedApplication/finishedJob/1/${size}/${name}`)
+    axios.get(`http://192.168.0.6:8181/finishedApplication/finishedJob/1/${lenth}/${name}`)
     .then(res => {
       console.log(res)
       setResult(res.data);
@@ -86,7 +86,7 @@ export default function FinishedApplication(props) {
         onChange={(e) => {
           if (props.state == "") {
             axios
-            .get(`http://192.168.0.6:8181/finishedApplication/finishedJob/${e}/${size}/${name}`)
+            .get(`http://192.168.0.6:8181/finishedApplication/finishedJob/${e}/${lenth}/${name}`)
             .then((res) => {
               // res.data.map(e => ({id:e.id, title: e.title}))
               setResult(res.data);
@@ -94,7 +94,7 @@ export default function FinishedApplication(props) {
           } else{
             axios
             .get(
-              `http://localhost:8181/finishedApplication/finishedJobSearch/${e}/${size}/${name}/${props.state}`
+              `http://localhost:8181/finishedApplication/finishedJobSearch/${e}/${lenth}/${name}/${props.state}`
             )
             .then((res) => setResult(res.data.content));
           }
@@ -105,41 +105,3 @@ export default function FinishedApplication(props) {
     </div>
   );
 }
-
-
-// import React, { Fragment, useState, useContext, useEffect } from "react";
-// import { Card } from 'antd';
-// import {Link} from 'react-router-dom';
-// import axios from "axios";
-// import {TextContext} from "../app";
-
-// export default function AppliedTask() {
-//   const [name,setName] = useContext(TextContext);
-//   const [user,setUser] = useState([]);
-//   useEffect(() => {
-//     axios.get(`http://192.168.0.6:8181/finishedTask/finishedApp/${name}`)
-//     .then(res => {
-//       console.log(res.data)
-//         setUser(res.data);
-//     }
-//     )
-//     }, [])
-//   return (
-//     <Fragment>
-//       {
-//         user.map(e=>(
-//         <Card title={e.applicant} 
-//         // extra={<Link style ={{display: (e[3]=="0"?"none":"block")}} to={{
-//         //   pathname: "/applicants",
-//         //   state: { from: e }
-//         // }}>More</Link>} 
-//         style={{ width: 900, margin : 10 }}>
-//         <p>TaskID: {e.taskID}</p>
-//         <p>{e.details}</p>
-//       </Card>
-      
-//       ))
-//       }
-//     </Fragment>
-//   );
-// }

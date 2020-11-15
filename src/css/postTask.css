@@ -1,6 +1,6 @@
-.outDiv{
-  width: 900px;
-  margin-top: 6%;
+.outDivP{
+  width: 1000px;
+  margin: 6% auto;
   height: 80%;
   display: flex;
   /* margin-left: 20px; */

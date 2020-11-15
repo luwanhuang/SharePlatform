@@ -41,15 +41,15 @@ const PostTask = () => {
   };
 
   return (
-    <div className = "outDiv">
+    <div className = "outDivP">
     <Form
       {...layout}
       name="nest-messages"
       onFinish={onFinish}
       validateMessages={validateMessages}
     >
-      <Form.Item name="title" label="Title" rules={[{ required: true }]}>
-        <Input />
+      <Form.Item name="title" label="Title"  rules={[{ required: true }]}>
+        <Input maxLength = {100}/>
       </Form.Item>
       {/* <span style={{ display: 'none'}}> */}
       <Form.Item
@@ -65,7 +65,7 @@ const PostTask = () => {
         <InputNumber />
       </Form.Item>
       <Form.Item name="tag" label="Tag">
-        <Input />
+        <Input maxLength = {100}/>
       </Form.Item>
 
         <Form.Item
@@ -74,7 +74,7 @@ const PostTask = () => {
           label="Details"
           rules={[{ required: true }]}
         >
-          <Input.TextArea className="details" />
+          <Input.TextArea maxLength = {1000} className="details" />
         </Form.Item>
 
       <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 18 }}>

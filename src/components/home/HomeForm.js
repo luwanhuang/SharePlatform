@@ -2,23 +2,19 @@ import React, { Fragment, useContext, useState, useEffect } from "react";
 import { Card, Pagination } from "antd";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import "../css/homeForm.css";
+import "../../css/homeForm.css";
 
 export default function HomeForm(props) {
-  const [keyword, setKeyword] = useState("");
   const [result, setResult] = useState([]);
   const [totalRes, setTotalRes] = useState(0);
-  const h = window.screen.availHeight / 5;
+
   const [temData, setTemData] = useState([]);
   const [temTotal, setTemTotal] = useState(0);
-  const div1 = {
-    width: "900px",
-    margin: "50px auto",
-    // marginTop:"5px",
-    minHeight: "200px",
 
-    boxSizing: "border-box",
-  };
+  //this part to change height depend on different screen size
+  const lenth = window.innerHeight<1100? 238:600;
+  const heig = window.innerHeight<1100? "237px":"303px";
+
   useEffect(() => {
     if (props.state != "") {
       axios
@@ -42,16 +38,19 @@ export default function HomeForm(props) {
       setResult(res.data.content);
     });
     axios.get("http://192.168.0.6:8181/task/showTotal").then((res) => {
+      console.log(res)
       setTemTotal(res.data);
       setTotalRes(res.data);
     });
   }, []);
 
   return (
-    <div style={div1}>
+    <div className = "homeFormD" >
+      <div className = "containCardsD">
       {result.map((e) => (
-        <Card
-          className="cards"
+        <div className="cards">
+        <Card style={{height : heig}}
+          hoverable = "true"
           title={e.title}
           extra={
             <Link
@@ -60,17 +59,19 @@ export default function HomeForm(props) {
                 state: { from: e },
               }}
             >
-              More
+              Apply
             </Link>
           }
-          style={{ width: 900, marginTop: 10, height: h }}
+          
         >
           <p>{e.tag}</p>
           <p>${e.price}</p>
-          <p>{e.details.substring(0, 245)}...</p>
-        </Card>
-      ))}
+          <p>{e.details.substring(0, lenth)}...</p>
+        </Card></div>
+      ))}</div>
+      <div className = "paginationD">
       <Pagination
+      
         defaultCurrent={1}
         pageSize={3}
         onChange={(e) => {
@@ -92,6 +93,7 @@ export default function HomeForm(props) {
         }}
         total={totalRes}
       />
+      </div>
     </div>
   );
 }
