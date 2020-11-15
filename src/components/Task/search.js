@@ -17,8 +17,9 @@ const suffix = (
 export default function PSearch(props) {
   const [keyword, setKeyword] = useState("");
   return (
-    <div className = "SearchDiv" >
+    <div className="SearchDiv">
       <Search
+        allowClear="true"
         placeholder="Input keyword"
         enterButton="Search"
         size="large"

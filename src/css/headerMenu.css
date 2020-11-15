@@ -1,31 +1,78 @@
-.outDiv{
+.outDiv {
+  width: 1200px;
+  display: flex;
+  flex-direction: row;
+  margin: 30px auto;
+  height: 48px;
+}
+@media only screen and (max-height: 1080px) {
+  .outDiv {
     width: 1200px;
     display: flex;
-   flex-direction: row;
-    margin: 30px auto;
+    flex-direction: row;
+    margin: 15px 0px 5px;
     height: 48px;
-}
-@media only screen and (max-height:1080px){
-    .outDiv{
-        width: 1200px;
-        display: flex;
-       flex-direction: row;
-        margin: 15px 0px 5px ;
-        height: 48px;
-    }
+  }
 }
 
-.icons{
-    float: left;
-    font-size : 19px !important;
-    margin: 14px 10px;
+.icons {
+  float: left;
+  font-size: 19px !important;
+  margin: 14px 10px;
 }
 /* #root > section > div:nth-child(1) > ul.ant-menu.ant-menu-light.outMenu.ant-menu-root.ant-menu-horizontal{
     font-size: 22px !important;
 } */
 #root > section > div:nth-child(1) > ul:nth-child(1) {
-    font-size: 22px !important;
+  font-size: 22px !important;
 }
 #root > section > div:nth-child(1) > ul:nth-child(2) {
-    font-size: 22px !important;
+  font-size: 22px !important;
+}
+/* Post Task select width */
+#root > section > div > ul.ant-menu.ant-menu-light.outMenu.ant-menu-root.ant-menu-horizontal > li:nth-child(4){
+  width: 133px;
+}
+#root > section > div.outDiv > ul:nth-child(1) > li:nth-child(4){
+  width: 133px;
+}
+/* home selected width */
+#root > section > div.outDiv > ul.ant-menu.ant-menu-light.outMenu.ant-menu-root.ant-menu-horizontal > li.ant-menu-item.itemMenu.ant-menu-item-selected{
+  width: 115px;
+}
+#root > section > div.outDiv > ul.ant-menu.ant-menu-light.outMenu.ant-menu-root.ant-menu-horizontal > li.ant-menu-item.itemMenu{
+  width: 115px;
+}
+#root > section > div.outDiv > ul:nth-child(1) > li.ant-menu-item.ant-menu-item-selected{
+  width: 115px;
+}
+#root > section > div.outDiv > ul:nth-child(1) > li:nth-child(2){
+  width: 115px;
+}
+/* personal */
+#root > section > div > ul:nth-child(2) > li.ant-menu-submenu.ant-menu-submenu-horizontal.ant-menu-submenu-selected > div{
+  width: 100px;
+}
+#root > section > div.outDiv > ul:nth-child(2) > li:nth-child(2) > div{
+  width: 100px;
+}
+/* login selected width */
+#root > section > div.outDiv > ul:nth-child(2) > li:nth-child(1){
+  width: 100px;
+}
+
+#root > section > div.outDiv > ul:nth-child(2) > li.ant-menu-item.ant-menu-item-selected{
+  width: 100px !important;
+  margin-right: 5px !important;
+}
+#root > section > div.outDiv > ul:nth-child(2) > li:nth-child(2){
+  width: 100px !important;
+}
+
+/* sign up selected width */
+#root > section > div.outDiv > ul:nth-child(2) > li.ant-menu-item.ant-menu-item-selected{
+  width: 115px !important;
+}
+#root > section > div.outDiv > ul:nth-child(2) > li:nth-child(4){
+  width: 115px !important;
 }

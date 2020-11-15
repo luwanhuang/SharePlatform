@@ -4,7 +4,7 @@ import { QuestionCircleOutlined } from "@ant-design/icons";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import "../../css/signUp.css";
-import { TextContext,PathContext } from "../app";
+import { TextContext, PathContext } from "../app";
 
 const formItemLayout = {
   labelCol: {
@@ -31,7 +31,7 @@ const tailFormItemLayout = {
 
 export default function SignUp() {
   const [name, setName] = useContext(TextContext);
-  const [path,setPath] = useContext(PathContext);
+  const [path, setPath] = useContext(PathContext);
   const setCookie = (key, value, day) => {
     let expires = day * 86400 * 1000; //
     let date = new Date(+new Date() + expires); //
@@ -45,8 +45,10 @@ export default function SignUp() {
     axios
       .post("http://192.168.0.6:8181/user/save", values)
       .then(function (resp) {
-        if (resp.data == "exist") {
-          alert("Sorry, the username is already exist!");
+        if (resp.data == "existUsername") {
+          alert("Sorry, the Username is already exist!");
+        } else if (resp.data == "existEmail") {
+          alert("Sorry, the Email is already exist!");
         } else if (resp.data == "error") {
           alert("Sorry, something wrong, please register again!");
           window.location.reload();
@@ -56,7 +58,7 @@ export default function SignUp() {
           setCookie("username", resp.data, 15);
           // console.log(resp.data);
           setName(resp.data);
-          setPath("/home")
+          setPath("/home");
           history.push("/");
         }
       });
@@ -86,7 +88,7 @@ export default function SignUp() {
             },
           ]}
         >
-          <Input />
+          <Input allowClear="true"/>
         </Form.Item>
 
         <Form.Item
@@ -100,7 +102,7 @@ export default function SignUp() {
           ]}
           hasFeedback
         >
-          <Input.Password />
+          <Input.Password allowClear="true"/>
         </Form.Item>
 
         <Form.Item
@@ -125,7 +127,7 @@ export default function SignUp() {
             }),
           ]}
         >
-          <Input.Password />
+          <Input.Password allowClear="true"/>
         </Form.Item>
 
         <Form.Item
@@ -146,7 +148,7 @@ export default function SignUp() {
             },
           ]}
         >
-          <Input />
+          <Input allowClear="true" />
         </Form.Item>
 
         <Form.Item
@@ -154,7 +156,7 @@ export default function SignUp() {
           label="Address" //first step just try plan text, easy to combine with back-end
           rules={[{ required: true, message: "Please input your address!" }]}
         >
-          <Input style={{ width: "100%" }} />
+          <Input style={{ width: "100%" }} allowClear="true"/>
           {/* <Cascader options={residences} /> */}
         </Form.Item>
 
@@ -165,7 +167,7 @@ export default function SignUp() {
             { required: true, message: "Please input your phone number!" },
           ]}
         >
-          <Input style={{ width: "100%" }} />
+          <Input style={{ width: "100%" }}allowClear="true" />
         </Form.Item>
 
         <Form.Item
@@ -173,7 +175,7 @@ export default function SignUp() {
           label="Occupation"
           rules={[{ required: true, message: "Please input occupation!" }]}
         >
-          <Input />
+          <Input allowClear="true"/>
         </Form.Item>
 
         <Form.Item

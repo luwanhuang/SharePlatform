@@ -20,21 +20,21 @@
   background: #fff;
 }
 .site-layout {
-  width:100%;
-  height:calc(100vh - 64px); 
+  width: 100%;
+  height: calc(100vh - 64px);
 }
-.ant-menu{
+.ant-menu {
   font-size: 18px !important;
 }
-.ant-layout-sider-children{
+.ant-layout-sider-children {
   background: #fff;
 }
-.outHeader{
+.outHeader {
   display: flex;
 }
-.tog{
-  flex:1
+.tog {
+  flex: 1;
 }
-.search{
-  flex:18
+.search {
+  flex: 18;
 }

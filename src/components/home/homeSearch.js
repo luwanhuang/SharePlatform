@@ -19,7 +19,7 @@ export default function HomeSearch(props) {
   // const [category, setCategory] = useState("");
 
   return (
-    <div className = "SearchDiv" >
+    <div className="SearchDiv">
       {/* <br />
         <Input
           placeholder="input keyword"
@@ -34,6 +34,7 @@ export default function HomeSearch(props) {
         <br />
         <br /> */}
       <Search
+        allowClear="true"
         placeholder="Input keyword"
         enterButton="Search"
         size="large"

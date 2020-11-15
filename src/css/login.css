@@ -1,15 +1,15 @@
-.outDivLogin{
+.outDivLogin {
   width: 450px;
   margin-top: 10%;
   margin-left: auto;
   margin-right: auto;
 }
 .login-form-forgot {
-    float: right;
-  }
+  float: right;
+}
 .ant-col-rtl .login-form-forgot {
-    float: left;
-  }
+  float: left;
+}
 .login-form-button {
-    width: 100%;
-  }
+  width: 100%;
+}
