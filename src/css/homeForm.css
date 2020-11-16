@@ -12,6 +12,9 @@
 .paginationD {
   margin-top: 50px;
 }
+.containCardsD {
+  height: 935px;
+}
 @media only screen and (max-height: 1080px) {
   .homeFormD {
     width: 900px;
@@ -26,5 +29,8 @@
     width: 900px;
     margin-top: 10px;
     height: 237px;
+  }
+  .containCardsD {
+    height: 750px;
   }
 }
