@@ -102,7 +102,14 @@ export default function Update() {
         key={user.phone}
         initialValue={user.phone}
         label="Phone Number"
-        rules={[{ required: true, message: "Please input your phone number!" }]}
+        rules={[
+          { required: true, message: "Please input your phone number!" },
+          {
+            pattern: /^0[4][0-9]{8}$/,
+            message:
+              "The phone number must start from 04 and the length is 10!",
+          },
+        ]}
       >
         <Input style={{ width: "100%" }} allowClear="true" />
       </Form.Item>
