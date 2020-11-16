@@ -91,7 +91,7 @@ export default function FinishedApplication(props) {
       <div className="pPaginationD">
         <Pagination
           defaultCurrent={1}
-          pageSize={lenth}
+          pageSize={size}
           onChange={(e) => {
             if (props.state == "") {
               axios

@@ -67,8 +67,8 @@ const PostTask = () => {
           rules={[
             { required: true },
             {
-              pattern: /^(\d|[1-9]\d|10000000)$/,
-              message: "please input number between 0 and 10000000",
+              pattern: /^(\d|[1-9]\d){1,3}$/,
+              message: "please input number between 0 and 1000,000",
             },
           ]}
         >

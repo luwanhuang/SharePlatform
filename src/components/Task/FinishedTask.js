@@ -84,7 +84,8 @@ export default function FinishedTask(props) {
       <div className="pPaginationD">
         <Pagination
           defaultCurrent={1}
-          pageSize={lenth}
+          pageSize={size}
+          total={totalRes}
           onChange={(e) => {
             if (props.state == "") {
               axios
@@ -101,7 +102,6 @@ export default function FinishedTask(props) {
                 .then((res) => setResult(res.data.content));
             }
           }}
-          total={totalRes}
         />
       </div>
     </div>

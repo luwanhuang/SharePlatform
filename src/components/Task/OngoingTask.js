@@ -55,7 +55,7 @@ export default function OngoingTask(props) {
                 <Button
                   type="primary"
                   onClick={() => {
-                    axios.get(`/ongoingTask/agree/${e.id}`).then((res) => {
+                    axios.get(`/ongoingTask/agree/${e[0]}`).then((res) => {
                       if (res.data == "success") {
                         window.location.reload();
                       } else {
