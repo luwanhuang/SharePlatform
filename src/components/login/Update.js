@@ -93,7 +93,7 @@ export default function Update() {
         rules={[{ required: true, message: "Please input your address!" }]}
         key={user.address}
       >
-        <Input style={{ width: "100%" }} allowClear="true" />
+        <Input style={{ width: "100%" }} allowClear="true" maxLength={80} />
         {/* <Cascader options={residences} /> */}
       </Form.Item>
 
@@ -121,7 +121,7 @@ export default function Update() {
         label="Occupation"
         rules={[{ required: true, message: "Please input occupation!" }]}
       >
-        <Input allowClear="true" />
+        <Input allowClear="true" maxLength={30} />
       </Form.Item>
       <Form.Item
         // {...tailFormItemLayout}

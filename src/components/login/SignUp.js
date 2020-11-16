@@ -198,7 +198,7 @@ export default function SignUp() {
             },
           ]}
         >
-          <Input allowClear="true" />
+          <Input allowClear="true" maxLength={30} />
         </Form.Item>
 
         <Form.Item
@@ -206,7 +206,7 @@ export default function SignUp() {
           label="Address" //first step just try plan text, easy to combine with back-end
           rules={[{ required: true, message: "Please input your address!" }]}
         >
-          <Input style={{ width: "100%" }} allowClear="true" />
+          <Input style={{ width: "100%" }} allowClear="true" maxLength={80} />
           {/* <Cascader options={residences} /> */}
         </Form.Item>
 
@@ -230,7 +230,7 @@ export default function SignUp() {
           label="Occupation"
           rules={[{ required: true, message: "Please input occupation!" }]}
         >
-          <Input allowClear="true" />
+          <Input allowClear="true" maxLength={30} />
         </Form.Item>
 
         <Form.Item
