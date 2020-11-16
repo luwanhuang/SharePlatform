@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useContext, useEffect } from "react";
 import { Card, Pagination, Button } from "antd";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import axios from "../utils/axiosInstance";
 import { TextContext } from "../app";
 import "../../css/personalTask.css";
 
@@ -18,16 +18,12 @@ export default function AppliedTask(props) {
   useEffect(() => {
     if (props.state != "") {
       axios
-        .get(
-          `http://localhost:8181/application/unstartedJobSearch/1/${size}/${name}/${props.state}`
-        )
+        .get(`/application/unstartedJobSearch/1/${size}/${name}/${props.state}`)
         .then(function (resp) {
           setResult(resp.data);
         });
       axios
-        .get(
-          `http://192.168.0.6:8181/application/totalUnstartedJobSearch/${name}/${props.state}`
-        )
+        .get(`/application/totalUnstartedJobSearch/${name}/${props.state}`)
         .then((res) => {
           setTotalRes(res.data);
         });
@@ -37,19 +33,15 @@ export default function AppliedTask(props) {
     }
   }, [props.state]);
   useEffect(() => {
-    axios
-      .get(`http://192.168.0.6:8181/application/unstartedJob/1/${size}/${name}`)
-      .then((res) => {
-        console.log(res);
-        setResult(res.data);
-        setTemData(res.data);
-      });
-    axios
-      .get(`http://192.168.0.6:8181/application/totalUnstartedJob/${name}`)
-      .then((res) => {
-        setTotalRes(res.data);
-        setTemTotal(res.data);
-      });
+    axios.get(`/application/unstartedJob/1/${size}/${name}`).then((res) => {
+      console.log(res);
+      setResult(res.data);
+      setTemData(res.data);
+    });
+    axios.get(`/application/totalUnstartedJob/${name}`).then((res) => {
+      setTotalRes(res.data);
+      setTemTotal(res.data);
+    });
   }, []);
   return (
     <div className="outFormD">
@@ -62,7 +54,7 @@ export default function AppliedTask(props) {
               //     extra={<Button type="primary"
               //     onClick = {
               //         ()=>{
-              //             axios.get(`http://192.168.0.6:8181/application/agree/${e.id}`)
+              //             axios.get(`/application/agree/${e.id}`)
               //                 .then(res => {
               //                   if(res.data =="success"){
               //                       window.location.reload();
@@ -97,9 +89,7 @@ export default function AppliedTask(props) {
           onChange={(e) => {
             if (props.state == "") {
               axios
-                .get(
-                  `http://192.168.0.6:8181/application/unstartedJob/${e}/${size}/${name}`
-                )
+                .get(`/application/unstartedJob/${e}/${size}/${name}`)
                 .then((res) => {
                   // res.data.map(e => ({id:e.id, title: e.title}))
                   setResult(res.data);
@@ -107,7 +97,7 @@ export default function AppliedTask(props) {
             } else {
               axios
                 .get(
-                  `http://localhost:8181/application/unstartedJobSearch/${e}/${size}/${name}/${props.state}`
+                  `/application/unstartedJobSearch/${e}/${size}/${name}/${props.state}`
                 )
                 .then((res) => setResult(res.data.content));
             }

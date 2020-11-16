@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Form, Input, Tooltip, Checkbox, Button, AutoComplete } from "antd";
 import { QuestionCircleOutlined } from "@ant-design/icons";
-import axios from "axios";
+import axios from "../utils/axiosInstance";
 import { useHistory } from "react-router-dom";
 import "../../css/signUp.css";
 import { TextContext } from "../app";
@@ -23,7 +23,7 @@ export default function Update() {
   let history = useHistory();
   const [form] = Form.useForm();
   useEffect(() => {
-    axios.get(`http://192.168.0.6:8181/user/update/${name}`).then((res) => {
+    axios.get(`/user/update/${name}`).then((res) => {
       // res.data.map(e => ({id:e.id, title: e.title}))
       let a = res.data;
       setUser(a);
@@ -32,19 +32,17 @@ export default function Update() {
   }, []);
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
-    axios
-      .post("http://192.168.0.6:8181/user/update", values)
-      .then(function (resp) {
-        if (resp.data == "success") {
-          history.push("/");
-        }
-      });
+    axios.post("/user/update", values).then(function (resp) {
+      if (resp.data == "success") {
+        history.push("/");
+      }
+    });
   };
 
   return (
     <Form
       {...formItemLayout}
-      style = {{marginTop:"60px"}}
+      style={{ marginTop: "60px" }}
       form={form}
       name="register"
       onFinish={onFinish}
@@ -95,7 +93,7 @@ export default function Update() {
         rules={[{ required: true, message: "Please input your address!" }]}
         key={user.address}
       >
-        <Input style={{ width: "100%" }} allowClear="true"/>
+        <Input style={{ width: "100%" }} allowClear="true" />
         {/* <Cascader options={residences} /> */}
       </Form.Item>
 
@@ -106,7 +104,7 @@ export default function Update() {
         label="Phone Number"
         rules={[{ required: true, message: "Please input your phone number!" }]}
       >
-        <Input style={{ width: "100%" }} allowClear="true"/>
+        <Input style={{ width: "100%" }} allowClear="true" />
       </Form.Item>
 
       <Form.Item
@@ -116,7 +114,7 @@ export default function Update() {
         label="Occupation"
         rules={[{ required: true, message: "Please input occupation!" }]}
       >
-        <Input allowClear="true"/>
+        <Input allowClear="true" />
       </Form.Item>
       <Form.Item
         // {...tailFormItemLayout}

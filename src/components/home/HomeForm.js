@@ -1,7 +1,7 @@
 import React, { Fragment, useContext, useState, useEffect } from "react";
 import { Card, Pagination } from "antd";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import axios from "../utils/axiosInstance";
 import "../../css/homeForm.css";
 
 export default function HomeForm(props) {
@@ -17,27 +17,23 @@ export default function HomeForm(props) {
 
   useEffect(() => {
     if (props.state != "") {
-      axios
-        .get(`http://localhost:8181/task/keyword/1/3/${props.state}`)
-        .then(function (resp) {
-          setResult(resp.data.content);
-        });
-      axios
-        .get(`http://192.168.0.6:8181/task/totalLikeKeyword/${props.state}`)
-        .then((res) => {
-          setTotalRes(res.data);
-        });
+      axios.get(`/task/keyword/1/3/${props.state}`).then(function (resp) {
+        setResult(resp.data.content);
+      });
+      axios.get(`/task/totalLikeKeyword/${props.state}`).then((res) => {
+        setTotalRes(res.data);
+      });
     } else {
       setResult(temData);
       setTotalRes(temTotal);
     }
   }, [props.state]);
   useEffect(() => {
-    axios.get("http://192.168.0.6:8181/task/findAll/1/3").then((res) => {
+    axios.get("/task/findAll/1/3").then((res) => {
       setTemData(res.data.content);
       setResult(res.data.content);
     });
-    axios.get("http://192.168.0.6:8181/task/showTotal").then((res) => {
+    axios.get("/task/showTotal").then((res) => {
       console.log(res);
       setTemTotal(res.data);
       setTotalRes(res.data);
@@ -77,18 +73,14 @@ export default function HomeForm(props) {
           pageSize={3}
           onChange={(e) => {
             if (props.state == "") {
-              axios
-                .get(`http://192.168.0.6:8181/task/findAll/${e}/${3}`)
-                .then((res) => {
-                  // res.data.map(e => ({id:e.id, title: e.title}))
-                  console.log(res.data.content);
-                  setResult(res.data.content);
-                });
+              axios.get(`/task/findAll/${e}/${3}`).then((res) => {
+                // res.data.map(e => ({id:e.id, title: e.title}))
+                console.log(res.data.content);
+                setResult(res.data.content);
+              });
             } else {
               axios
-                .get(
-                  `http://localhost:8181/task/keyword/${e}/${3}/${props.state}`
-                )
+                .get(`/task/keyword/${e}/${3}/${props.state}`)
                 .then((res) => setResult(res.data.content));
             }
           }}

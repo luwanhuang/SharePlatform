@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Form, Input, Tooltip, Checkbox, Button, AutoComplete } from "antd";
 import { QuestionCircleOutlined } from "@ant-design/icons";
-import axios from "axios";
+import axios from "../utils/axiosInstance";
 import { useHistory } from "react-router-dom";
 import "../../css/signUp.css";
 import { TextContext, PathContext } from "../app";
@@ -32,6 +32,12 @@ const tailFormItemLayout = {
 export default function SignUp() {
   const [name, setName] = useContext(TextContext);
   const [path, setPath] = useContext(PathContext);
+  const [msg, setMsg] = useState({
+    errorMsg: null,
+  });
+  const [emailMsg, setEmailMsg] = useState({
+    errorMsg: null,
+  });
   const setCookie = (key, value, day) => {
     let expires = day * 86400 * 1000; //
     let date = new Date(+new Date() + expires); //
@@ -39,29 +45,59 @@ export default function SignUp() {
   };
   let history = useHistory();
   const [form] = Form.useForm();
+  const checkUsername = (e) => {
+    console.log(e.target.value);
+    axios.get(`/user/findByUsername/${e.target.value}`).then((res) => {
+      if (res.data != "") {
+        setMsg({
+          validateStatus: "error",
+          errorMsg: "The username is exist!",
+        });
+      } else {
+        setMsg({
+          // validateStatus: 'success',
+          errorMsg: null,
+        });
+      }
+    });
+  };
+  const checkEmail = (e) => {
+    console.log(e.target.value);
+    axios.get(`/user/findByEmail/${e.target.value}`).then((res) => {
+      if (res.data != "") {
+        setEmailMsg({
+          validateStatus: "error",
+          errorMsg: "The Email is exist!",
+        });
+      } else {
+        setEmailMsg({
+          // validateStatus: 'success',
+          errorMsg: null,
+        });
+      }
+    });
+  };
 
   const onFinish = (values) => {
     // console.log('Received values of form: ', values);
-    axios
-      .post("http://192.168.0.6:8181/user/save", values)
-      .then(function (resp) {
-        if (resp.data == "existUsername") {
-          alert("Sorry, the Username is already exist!");
-        } else if (resp.data == "existEmail") {
-          alert("Sorry, the Email is already exist!");
-        } else if (resp.data == "error") {
-          alert("Sorry, something wrong, please register again!");
-          window.location.reload();
-        } else {
-          alert("congratulations!");
-          setCookie("login", true, 15);
-          setCookie("username", resp.data, 15);
-          // console.log(resp.data);
-          setName(resp.data);
-          setPath("/home");
-          history.push("/");
-        }
-      });
+    axios.post("/user/save", values).then(function (resp) {
+      if (resp.data == "existUsername") {
+        alert("Sorry, the Username is already exist!");
+      } else if (resp.data == "existEmail") {
+        alert("Sorry, the Email is already exist!");
+      } else if (resp.data == "error") {
+        alert("Sorry, something wrong, please register again!");
+        window.location.reload();
+      } else {
+        alert("congratulations!");
+        setCookie("login", true, 15);
+        setCookie("username", resp.data, 15);
+        // console.log(resp.data);
+        setName(resp.data);
+        setPath("/home");
+        history.push("/");
+      }
+    });
   };
 
   return (
@@ -77,6 +113,10 @@ export default function SignUp() {
         <Form.Item
           name="email"
           label="E-mail"
+          onBlur={checkEmail}
+          hasFeedback
+          validateStatus={emailMsg.validateStatus}
+          help={emailMsg.errorMsg}
           rules={[
             {
               type: "email",
@@ -88,7 +128,7 @@ export default function SignUp() {
             },
           ]}
         >
-          <Input allowClear="true"/>
+          <Input allowClear="true" />
         </Form.Item>
 
         <Form.Item
@@ -99,10 +139,15 @@ export default function SignUp() {
               required: true,
               message: "Please input your password!",
             },
+            {
+              pattern: /^(?=.*[a-zA-Z])(?=.*[0-9])[A-Za-z0-9]{8,18}$/,
+              message:
+                "The password must include one Cap character, one lower character and number, length between 8 to 18",
+            },
           ]}
           hasFeedback
         >
-          <Input.Password allowClear="true"/>
+          <Input.Password allowClear="true" />
         </Form.Item>
 
         <Form.Item
@@ -127,11 +172,16 @@ export default function SignUp() {
             }),
           ]}
         >
-          <Input.Password allowClear="true"/>
+          <Input.Password allowClear="true" />
         </Form.Item>
 
         <Form.Item
           name="username"
+          // validateStatus = {usernameStatus}
+          onBlur={checkUsername}
+          hasFeedback
+          validateStatus={msg.validateStatus}
+          help={msg.errorMsg}
           label={
             <span>
               Username&nbsp;
@@ -143,7 +193,7 @@ export default function SignUp() {
           rules={[
             {
               required: true,
-              message: "Please input your nickname!",
+              message: "Please input your username!",
               whitespace: true,
             },
           ]}
@@ -156,7 +206,7 @@ export default function SignUp() {
           label="Address" //first step just try plan text, easy to combine with back-end
           rules={[{ required: true, message: "Please input your address!" }]}
         >
-          <Input style={{ width: "100%" }} allowClear="true"/>
+          <Input style={{ width: "100%" }} allowClear="true" />
           {/* <Cascader options={residences} /> */}
         </Form.Item>
 
@@ -165,9 +215,14 @@ export default function SignUp() {
           label="Phone Number"
           rules={[
             { required: true, message: "Please input your phone number!" },
+            {
+              pattern: /^0[4][0-9]{8}$/,
+              message:
+                "The phone number must start from 04 and the length is 10!",
+            },
           ]}
         >
-          <Input style={{ width: "100%" }}allowClear="true" />
+          <Input style={{ width: "100%" }} allowClear="true" />
         </Form.Item>
 
         <Form.Item
@@ -175,7 +230,7 @@ export default function SignUp() {
           label="Occupation"
           rules={[{ required: true, message: "Please input occupation!" }]}
         >
-          <Input allowClear="true"/>
+          <Input allowClear="true" />
         </Form.Item>
 
         <Form.Item

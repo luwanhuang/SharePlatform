@@ -4,7 +4,7 @@ import { Form, Input, InputNumber, Button } from "antd";
 import { useHistory, useLocation } from "react-router-dom";
 import { Typography, Divider } from "antd";
 import { TextContext, PathContext } from "../app";
-import axios from "axios";
+import axios from "../utils/axiosInstance";
 
 const { Title, Paragraph, Text, Link } = Typography;
 
@@ -30,18 +30,16 @@ const ApplyTask = () => {
     let { from } = location.state;
     setPath("/applyTask");
     const onFinish = (values) => {
-      axios
-        .post("http://192.168.0.6:8181/application/save", values)
-        .then(function (resp) {
-          if (resp.data == "success") {
-            history.push("/");
-          } else if (resp.data == "applied") {
-            alert("Sorry, you already applied!");
-          }
-        });
+      axios.post("/application/save", values).then(function (resp) {
+        if (resp.data == "success") {
+          history.push("/");
+        } else if (resp.data == "applied") {
+          alert("Sorry, you already applied!");
+        }
+      });
     };
     let flag = name == from.username ? true : false;
-    // axios.post(`http://192.168.0.6:8181/application/findOne/${from.taskID}/${name}`).then(function (resp) {
+    // axios.post(`/application/findOne/${from.taskID}/${name}`).then(function (resp) {
     //     if (resp.data == "success") {
     //       flag = true;
     //     }

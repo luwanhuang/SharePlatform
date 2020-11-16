@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useContext, useEffect } from "react";
 import { Card, Pagination } from "antd";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import axios from "../utils/axiosInstance";
 import { TextContext } from "../app";
 import "../../css/personalTask.css";
 
@@ -16,16 +16,12 @@ export default function PostedTask(props) {
   useEffect(() => {
     if (props.state != "") {
       axios
-        .get(
-          `http://localhost:8181/task/postedSearch/1/${lenth}/${name}/${props.state}`
-        )
+        .get(`/task/postedSearch/1/${lenth}/${name}/${props.state}`)
         .then(function (resp) {
           setResult(resp.data);
         });
       axios
-        .get(
-          `http://192.168.0.6:8181/task/unstartedSearchTotal/${name}/${props.state}`
-        )
+        .get(`/task/unstartedSearchTotal/${name}/${props.state}`)
         .then((res) => {
           setTotalRes(res.data);
         });
@@ -35,19 +31,15 @@ export default function PostedTask(props) {
     }
   }, [props.state]);
   useEffect(() => {
-    axios
-      .get(`http://192.168.0.6:8181/task/posted/1/${lenth}/${name}`)
-      .then((res) => {
-        console.log(res);
-        setResult(res.data);
-        setTemData(res.data);
-      });
-    axios
-      .get(`http://192.168.0.6:8181/task/unstartedTotal/${name}`)
-      .then((res) => {
-        setTotalRes(res.data);
-        setTemTotal(res.data);
-      });
+    axios.get(`/task/posted/1/${lenth}/${name}`).then((res) => {
+      console.log(res);
+      setResult(res.data);
+      setTemData(res.data);
+    });
+    axios.get(`/task/unstartedTotal/${name}`).then((res) => {
+      setTotalRes(res.data);
+      setTemTotal(res.data);
+    });
   }, []);
   return (
     <div className="outFormD">
@@ -87,19 +79,13 @@ export default function PostedTask(props) {
           pageSize={lenth}
           onChange={(e) => {
             if (props.state == "") {
-              axios
-                .get(
-                  `http://192.168.0.6:8181/task/posted/${e}/${lenth}/${name}`
-                )
-                .then((res) => {
-                  // res.data.map(e => ({id:e.id, title: e.title}))
-                  setResult(res.data);
-                });
+              axios.get(`/task/posted/${e}/${lenth}/${name}`).then((res) => {
+                // res.data.map(e => ({id:e.id, title: e.title}))
+                setResult(res.data);
+              });
             } else {
               axios
-                .get(
-                  `http://localhost:8181/task/postedSearch/${e}/${lenth}/${name}/${props.state}`
-                )
+                .get(`/task/postedSearch/${e}/${lenth}/${name}/${props.state}`)
                 .then((res) => setResult(res.data.content));
             }
           }}

@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useContext, useEffect } from "react";
 import { Card, Pagination, Button } from "antd";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import axios from "../utils/axiosInstance";
 import { TextContext } from "../app";
 import "../../css/personalTask.css";
 
@@ -19,15 +19,13 @@ export default function OngoingApplication(props) {
     if (props.state != "") {
       axios
         .get(
-          `http://localhost:8181/ongoingApplication/ongoingJobSearch/1/${size}/${name}/${props.state}`
+          `/ongoingApplication/ongoingJobSearch/1/${size}/${name}/${props.state}`
         )
         .then(function (resp) {
           setResult(resp.data);
         });
       axios
-        .get(
-          `http://192.168.0.6:8181/ongoingApplication/totalOngoingJobSearch/${name}/${props.state}`
-        )
+        .get(`/ongoingApplication/totalOngoingJobSearch/${name}/${props.state}`)
         .then((res) => {
           setTotalRes(res.data);
         });
@@ -38,20 +36,16 @@ export default function OngoingApplication(props) {
   }, [props.state]);
   useEffect(() => {
     axios
-      .get(
-        `http://192.168.0.6:8181/ongoingApplication/ongoingJob/1/${size}/${name}`
-      )
+      .get(`/ongoingApplication/ongoingJob/1/${size}/${name}`)
       .then((res) => {
         console.log(res);
         setResult(res.data);
         setTemData(res.data);
       });
-    axios
-      .get(`http://192.168.0.6:8181/ongoingApplication/totalOngoingJob/${name}`)
-      .then((res) => {
-        setTotalRes(res.data);
-        setTemTotal(res.data);
-      });
+    axios.get(`/ongoingApplication/totalOngoingJob/${name}`).then((res) => {
+      setTotalRes(res.data);
+      setTemTotal(res.data);
+    });
   }, []);
   return (
     <div className="outFormD">
@@ -64,7 +58,7 @@ export default function OngoingApplication(props) {
               //     extra={<Button type="primary"
               //     onClick = {
               //         ()=>{
-              //             axios.get(`http://192.168.0.6:8181/ongoingApplication/agree/${e.id}`)
+              //             axios.get(`/ongoingApplication/agree/${e.id}`)
               //                 .then(res => {
               //                   if(res.data =="success"){
               //                       window.location.reload();
@@ -99,9 +93,7 @@ export default function OngoingApplication(props) {
           onChange={(e) => {
             if (props.state == "") {
               axios
-                .get(
-                  `http://192.168.0.6:8181/ongoingApplication/ongoingJob/${e}/${size}/${name}`
-                )
+                .get(`/ongoingApplication/ongoingJob/${e}/${size}/${name}`)
                 .then((res) => {
                   // res.data.map(e => ({id:e.id, title: e.title}))
                   setResult(res.data);
@@ -109,7 +101,7 @@ export default function OngoingApplication(props) {
             } else {
               axios
                 .get(
-                  `http://localhost:8181/ongoingApplication/ongoingJobSearch/${e}/${size}/${name}/${props.state}`
+                  `/ongoingApplication/ongoingJobSearch/${e}/${size}/${name}/${props.state}`
                 )
                 .then((res) => setResult(res.data.content));
             }
@@ -131,7 +123,7 @@ export default function OngoingApplication(props) {
 //   const [name,setName] = useContext(TextContext);
 //   const [user,setUser] = useState([]);
 //   useEffect(() => {
-//     axios.get(`http://192.168.0.6:8181/ongoingTask/ongoing/${name}`)
+//     axios.get(`/ongoingTask/ongoing/${name}`)
 //     .then(res => {
 //       console.log(res.data)
 //         setUser(res.data);

@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import "../../css/postTask.css";
 import { Form, Input, InputNumber, Button } from "antd";
 import { useHistory } from "react-router-dom";
-import axios from "axios";
+import axios from "../utils/axiosInstance";
 import { TextContext, PathContext } from "../app";
 
 const layout = {
@@ -32,14 +32,12 @@ const PostTask = () => {
   const [name, setName] = useContext(TextContext);
   const [path, setPath] = useContext(PathContext);
   const onFinish = (values) => {
-    axios
-      .post("http://192.168.0.6:8181/task/save", values)
-      .then(function (resp) {
-        if (resp.data == "success") {
-          setPath("/home");
-          history.push("/");
-        }
-      });
+    axios.post("/task/save", values).then(function (resp) {
+      if (resp.data == "success") {
+        setPath("/home");
+        history.push("/");
+      }
+    });
   };
 
   return (
@@ -63,7 +61,17 @@ const PostTask = () => {
         {/* <Form.Item name= 'deadline' label="Deadline" rules={[{ required: true }]}>
         <Input />
       </Form.Item> */}
-        <Form.Item name="price" label="Price" rules={[{ required: true }]}>
+        <Form.Item
+          name="price"
+          label="Price"
+          rules={[
+            { required: true },
+            {
+              pattern: /^(\d|[1-9]\d|10000000)$/,
+              message: "please input number between 0 and 10000000",
+            },
+          ]}
+        >
           <InputNumber allowClear="true" />
         </Form.Item>
         <Form.Item name="tag" label="Tag">

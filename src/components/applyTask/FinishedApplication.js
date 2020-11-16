@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useContext, useEffect } from "react";
 import { Card, Pagination, Button } from "antd";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import axios from "../utils/axiosInstance";
 import { TextContext } from "../app";
 import "../../css/personalTask.css";
 
@@ -19,14 +19,14 @@ export default function FinishedApplication(props) {
     if (props.state != "") {
       axios
         .get(
-          `http://localhost:8181/finishedApplication/finishedJobSearch/1/${size}/${name}/${props.state}`
+          `/finishedApplication/finishedJobSearch/1/${size}/${name}/${props.state}`
         )
         .then(function (resp) {
           setResult(resp.data);
         });
       axios
         .get(
-          `http://192.168.0.6:8181/finishedApplication/totalFinishedJobSearch/${name}/${props.state}`
+          `/finishedApplication/totalFinishedJobSearch/${name}/${props.state}`
         )
         .then((res) => {
           setTotalRes(res.data);
@@ -38,22 +38,16 @@ export default function FinishedApplication(props) {
   }, [props.state]);
   useEffect(() => {
     axios
-      .get(
-        `http://192.168.0.6:8181/finishedApplication/finishedJob/1/${size}/${name}`
-      )
+      .get(`/finishedApplication/finishedJob/1/${size}/${name}`)
       .then((res) => {
         console.log(res);
         setResult(res.data);
         setTemData(res.data);
       });
-    axios
-      .get(
-        `http://192.168.0.6:8181/finishedApplication/totalFinishedJob/${name}`
-      )
-      .then((res) => {
-        setTotalRes(res.data);
-        setTemTotal(res.data);
-      });
+    axios.get(`/finishedApplication/totalFinishedJob/${name}`).then((res) => {
+      setTotalRes(res.data);
+      setTemTotal(res.data);
+    });
   }, []);
   return (
     <div className="outFormD">
@@ -66,7 +60,7 @@ export default function FinishedApplication(props) {
               //     extra={<Button type="primary"
               //     onClick = {
               //         ()=>{
-              //             axios.get(`http://192.168.0.6:8181/finishedApplication/agree/${e.id}`)
+              //             axios.get(`/finishedApplication/agree/${e.id}`)
               //                 .then(res => {
               //                   if(res.data =="success"){
               //                       window.location.reload();
@@ -101,9 +95,7 @@ export default function FinishedApplication(props) {
           onChange={(e) => {
             if (props.state == "") {
               axios
-                .get(
-                  `http://192.168.0.6:8181/finishedApplication/finishedJob/${e}/${size}/${name}`
-                )
+                .get(`/finishedApplication/finishedJob/${e}/${size}/${name}`)
                 .then((res) => {
                   // res.data.map(e => ({id:e.id, title: e.title}))
                   setResult(res.data);
@@ -111,7 +103,7 @@ export default function FinishedApplication(props) {
             } else {
               axios
                 .get(
-                  `http://localhost:8181/finishedApplication/finishedJobSearch/${e}/${size}/${name}/${props.state}`
+                  `/finishedApplication/finishedJobSearch/${e}/${size}/${name}/${props.state}`
                 )
                 .then((res) => setResult(res.data.content));
             }
@@ -133,7 +125,7 @@ export default function FinishedApplication(props) {
 //   const [name,setName] = useContext(TextContext);
 //   const [user,setUser] = useState([]);
 //   useEffect(() => {
-//     axios.get(`http://192.168.0.6:8181/finishedTask/finishedApp/${name}`)
+//     axios.get(`/finishedTask/finishedApp/${name}`)
 //     .then(res => {
 //       console.log(res.data)
 //         setUser(res.data);

@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useContext, useEffect } from "react";
 import { Card, Pagination, Button } from "antd";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import axios from "../utils/axiosInstance";
 import { TextContext } from "../app";
 import "../../css/personalTask.css";
 
@@ -18,16 +18,12 @@ export default function OngoingTask(props) {
   useEffect(() => {
     if (props.state != "") {
       axios
-        .get(
-          `http://localhost:8181/ongoingTask/ongoingSearch/1/${size}/${name}/${props.state}`
-        )
+        .get(`/ongoingTask/ongoingSearch/1/${size}/${name}/${props.state}`)
         .then(function (resp) {
           setResult(resp.data);
         });
       axios
-        .get(
-          `http://192.168.0.6:8181/ongoingTask/ongoingSearchTotal/${name}/${props.state}`
-        )
+        .get(`/ongoingTask/ongoingSearchTotal/${name}/${props.state}`)
         .then((res) => {
           setTotalRes(res.data);
         });
@@ -37,19 +33,15 @@ export default function OngoingTask(props) {
     }
   }, [props.state]);
   useEffect(() => {
-    axios
-      .get(`http://192.168.0.6:8181/ongoingTask/ongoing/1/${size}/${name}`)
-      .then((res) => {
-        console.log(res);
-        setResult(res.data);
-        setTemData(res.data);
-      });
-    axios
-      .get(`http://192.168.0.6:8181/ongoingTask/ongoingTotal/${name}`)
-      .then((res) => {
-        setTotalRes(res.data);
-        setTemTotal(res.data);
-      });
+    axios.get(`/ongoingTask/ongoing/1/${size}/${name}`).then((res) => {
+      console.log(res);
+      setResult(res.data);
+      setTemData(res.data);
+    });
+    axios.get(`/ongoingTask/ongoingTotal/${name}`).then((res) => {
+      setTotalRes(res.data);
+      setTemTotal(res.data);
+    });
   }, []);
   return (
     <div className="outFormD">
@@ -63,16 +55,14 @@ export default function OngoingTask(props) {
                 <Button
                   type="primary"
                   onClick={() => {
-                    axios
-                      .get(`http://192.168.0.6:8181/ongoingTask/agree/${e.id}`)
-                      .then((res) => {
-                        if (res.data == "success") {
-                          window.location.reload();
-                        } else {
-                          alert("something is wrong");
-                          window.location.reload();
-                        }
-                      });
+                    axios.get(`/ongoingTask/agree/${e.id}`).then((res) => {
+                      if (res.data == "success") {
+                        window.location.reload();
+                      } else {
+                        alert("something is wrong");
+                        window.location.reload();
+                      }
+                    });
                   }}
                   shape="round"
                   size="large"
@@ -100,9 +90,7 @@ export default function OngoingTask(props) {
           onChange={(e) => {
             if (props.state == "") {
               axios
-                .get(
-                  `http://192.168.0.6:8181/ongoingTask/ongoing/${e}/${size}/${name}`
-                )
+                .get(`/ongoingTask/ongoing/${e}/${size}/${name}`)
                 .then((res) => {
                   // res.data.map(e => ({id:e.id, title: e.title}))
                   setResult(res.data);
@@ -110,7 +98,7 @@ export default function OngoingTask(props) {
             } else {
               axios
                 .get(
-                  `http://localhost:8181/ongoingTask/ongoingSearch/${e}/${size}/${name}/${props.state}`
+                  `/ongoingTask/ongoingSearch/${e}/${size}/${name}/${props.state}`
                 )
                 .then((res) => setResult(res.data.content));
             }

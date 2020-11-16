@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Form, Input, Button, Checkbox, Card } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
-import axios from "axios";
+import axios from "../utils/axiosInstance";
 import "../../css/login.css";
 import { useHistory, useLocation, Link } from "react-router-dom";
 import { TextContext, PathContext } from "../app";
@@ -15,23 +15,21 @@ export default function LogIn() {
 
   const onFinish = (values) => {
     // console.log('Received values of form: ', values);
-    axios
-      .post("http://192.168.0.6:8181/user/login", values)
-      .then(function (resp) {
-        if (resp.data == "error") {
-          setCookie("login", "", -1);
-          setCookie("username", "", -1);
-          setShow("block");
-          setName("");
-          // onFinishFailed(resp);
-        } else {
-          setCookie("login", true, 15);
-          setCookie("username", resp.data, 15);
-          // console.log(resp.data);
-          setName(resp.data);
-          jumpBack();
-        }
-      });
+    axios.post("/user/login", values).then(function (resp) {
+      if (resp.data == "error") {
+        setCookie("login", "", -1);
+        setCookie("username", "", -1);
+        setShow("block");
+        setName("");
+        // onFinishFailed(resp);
+      } else {
+        setCookie("login", true, 15);
+        setCookie("username", resp.data, 15);
+        // console.log(resp.data);
+        setName(resp.data);
+        jumpBack();
+      }
+    });
   };
   const setCookie = (key, value, day) => {
     let expires = day * 86400 * 1000; //

@@ -17,10 +17,6 @@ const { SubMenu } = Menu;
 export default function Header() {
   const [name, setName] = useContext(TextContext);
   const [state, setState] = useContext(PathContext);
-  // let str = window.location.pathname;
-  // if (str == "/"||str==""){
-  //   str = "/home";
-  // }
   let history = useHistory();
   useEffect(() => {
     let str = window.location.pathname;
@@ -46,10 +42,8 @@ export default function Header() {
     } else if (e.key == "update") {
       history.push("/update");
     } else if (e.key == "posted") {
-      // history.push("/postedTask")
       history.push("/sider");
     } else if (e.key == "applied") {
-      // history.push("/postedTask")
       history.push("/appsider");
     }
     //       else if(e.key == "/home"){

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, useLocation } from "react-router-dom";
-import axios from "axios";
+import axios from "../utils/axiosInstance";
 import { List, Avatar, Button, Radio } from "antd";
 
 export default function Applicants() {
@@ -9,11 +9,9 @@ export default function Applicants() {
   let location = useLocation();
   let id = location.state == null ? 1 : location.state.from[0];
   useEffect(() => {
-    axios
-      .get(`http://192.168.0.6:8181/task/showApplicants/${id}`)
-      .then((resp) => {
-        setApplicants(resp.data);
-      });
+    axios.get(`/task/showApplicants/${id}`).then((resp) => {
+      setApplicants(resp.data);
+    });
   }, []);
   if (location.state == null) {
     history.push("/");
@@ -34,18 +32,14 @@ export default function Applicants() {
                 <div width={300}>
                   <Button
                     onClick={() => {
-                      axios
-                        .get(
-                          `http://192.168.0.6:8181/task/agree/${e[6]}/${e[0]}`
-                        )
-                        .then((res) => {
-                          if (res.data == "success") {
-                            history.push("/sider");
-                          } else {
-                            alert("something is wrong");
-                            window.location.reload();
-                          }
-                        });
+                      axios.get(`/task/agree/${e[6]}/${e[0]}`).then((res) => {
+                        if (res.data == "success") {
+                          history.push("/sider");
+                        } else {
+                          alert("something is wrong");
+                          window.location.reload();
+                        }
+                      });
                     }}
                     type="primary"
                     shape="round"
@@ -57,9 +51,7 @@ export default function Applicants() {
               }
             >
               <List.Item.Meta
-                avatar={
-                  <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-                }
+                avatar={<Avatar src="./img/client.png" />}
                 title={e[1]}
                 description={e[2] + " " + e[3]}
               />
