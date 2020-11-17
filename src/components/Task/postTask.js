@@ -29,7 +29,7 @@ const validateMessages = {
 
 const PostTask = () => {
   let history = useHistory();
-  const [name, setName] = useContext(TextContext);
+  const [username, setUsername] = useContext(TextContext);
   const [path, setPath] = useContext(PathContext);
   const onFinish = (values) => {
     axios.post("/task/save", values).then(function (resp) {
@@ -55,7 +55,7 @@ const PostTask = () => {
         <Form.Item
           name="username"
           hidden="true"
-          initialValue={name}
+          initialValue={username}
         ></Form.Item>
         {/* </span> */}
         {/* <Form.Item name= 'deadline' label="Deadline" rules={[{ required: true }]}>

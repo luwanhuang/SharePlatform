@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: "http://192.168.0.6:8181",
+  baseURL: "http://localhost:8181",
+  // baseURL: "https://shareplatformreact.azurewebsites.net",
   timeout: 1000,
   // headers: {'X-Custom-Header': 'foobar'}
 });

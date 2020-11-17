@@ -43,9 +43,7 @@
 #root > section > div.outDiv > ul.ant-menu.ant-menu-light.outMenu.ant-menu-root.ant-menu-horizontal > li.ant-menu-item.itemMenu{
   width: 115px;
 }
-#root > section > div.outDiv > ul:nth-child(1) > li.ant-menu-item.ant-menu-item-selected{
-  width: 115px;
-}
+
 #root > section > div.outDiv > ul:nth-child(1) > li:nth-child(2){
   width: 115px;
 }
@@ -56,7 +54,7 @@
 #root > section > div.outDiv > ul:nth-child(2) > li:nth-child(2) > div{
   width: 100px;
 }
-/* login selected width */
+/* login selected width
 #root > section > div.outDiv > ul:nth-child(2) > li:nth-child(1){
   width: 100px;
 }
@@ -70,9 +68,9 @@
 }
 
 /* sign up selected width */
-#root > section > div.outDiv > ul:nth-child(2) > li.ant-menu-item.ant-menu-item-selected{
+/* #root > section > div.outDiv > ul:nth-child(2) > li.ant-menu-item.ant-menu-item-selected{
   width: 115px !important;
 }
 #root > section > div.outDiv > ul:nth-child(2) > li:nth-child(4){
   width: 115px !important;
-}
+} */ 

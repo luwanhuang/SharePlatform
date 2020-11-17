@@ -77,22 +77,17 @@ export default function Header() {
           >
             <NavLink to="/postTask">Post task</NavLink>
           </Menu.Item>
-        </Menu>
-        <Menu
-          style={{ flex: 2 }}
-          onClick={handleClick}
-          selectedKeys={state}
-          mode="horizontal"
-        >
-          <Menu.Item icon={<LoginOutlined className="icons" />} key="/logIn">
+          <Menu.Item 
+          style = {{float:"right"}}
+          icon={<LoginOutlined className="icons" />} key="/logIn">
             <NavLink to="/logIn">LogIn</NavLink>
           </Menu.Item>
-          <Menu.Item
+          {/* <Menu.Item
             icon={<UsergroupAddOutlined className="icons" />}
             key="/signUp"
           >
             <NavLink to="/signUp">SignUp</NavLink>
-          </Menu.Item>
+          </Menu.Item> */}
         </Menu>
       </div>
     );
@@ -102,7 +97,7 @@ export default function Header() {
         <Menu
           className="outMenu"
           key={state}
-          style={{ flex: 9 }}
+          style={{ flex: 1 }}
           onClick={handleClick}
           selectedKeys={state}
           mode="horizontal"
@@ -121,22 +116,17 @@ export default function Header() {
             </NavLink>
           </Menu.Item>
           <Menu.Item
+          
             icon={<CloudUploadOutlined className="icons" />}
             key="/postTask"
           >
             <NavLink to="/postTask">Post task</NavLink>
           </Menu.Item>
-        </Menu>
-        <Menu
-          style={{ flex: 1 }}
-          onClick={handleClick}
-          selectedKeys={state}
-          mode="horizontal"
-        >
           <SubMenu
             key="SubMenu"
             icon={<SettingOutlined className="icons" />}
             title={name}
+            style = {{float:"right"}}
           >
             <Menu.ItemGroup title="Task">
               <Menu.Item key="posted">Posted</Menu.Item>
@@ -148,6 +138,7 @@ export default function Header() {
             </Menu.ItemGroup>
           </SubMenu>
         </Menu>
+
       </div>
     );
   }
