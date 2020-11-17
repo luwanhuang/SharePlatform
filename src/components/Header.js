@@ -20,7 +20,7 @@ export default function Header() {
   let history = useHistory();
   useEffect(() => {
     let str = window.location.pathname;
-    if (str == "/" || str == "") {
+    if (str === "/" || str === "") {
       str = "/home";
     }
     console.log(str);
@@ -34,16 +34,16 @@ export default function Header() {
   };
 
   var handleClick = (e) => {
-    if (e.key == "logOut") {
+    if (e.key === "logOut") {
       setCookie("login", "", -1);
       setCookie("username", "", -1);
       setName("");
       history.push("/");
-    } else if (e.key == "update") {
+    } else if (e.key === "update") {
       history.push("/update");
-    } else if (e.key == "posted") {
+    } else if (e.key === "posted") {
       history.push("/sider");
-    } else if (e.key == "applied") {
+    } else if (e.key === "applied") {
       history.push("/appsider");
     }
     //       else if(e.key == "/home"){
@@ -58,7 +58,8 @@ export default function Header() {
     // }
     setState(e.key);
   };
-  if (name == "") {
+  // eslint-disable-next-line eqeqeq
+  if (name === "") {
     return (
       <div className="outDiv">
         <Menu
@@ -80,7 +81,7 @@ export default function Header() {
           <Menu.Item 
           style = {{float:"right"}}
           icon={<LoginOutlined className="icons" />} key="/logIn">
-            <NavLink to="/logIn">LogIn</NavLink>
+            <NavLink to="/logIn">LogIn/Reg</NavLink>
           </Menu.Item>
           {/* <Menu.Item
             icon={<UsergroupAddOutlined className="icons" />}
