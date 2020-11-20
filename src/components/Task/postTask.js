@@ -1,9 +1,11 @@
-import React, { useContext } from "react";
+import React, {useContext, useState} from "react";
 import "../../css/postTask.css";
 import { Form, Input, InputNumber, Button } from "antd";
 import { useHistory } from "react-router-dom";
 import axios from "../utils/axiosInstance";
 import { TextContext, PathContext } from "../app";
+import NewTag from "../utils/NewTag";
+import TagInput from "../utils/TagInput"
 
 const layout = {
   labelCol: {
@@ -29,11 +31,18 @@ const validateMessages = {
 
 const PostTask = () => {
   let history = useHistory();
+  const [str, setStr] = useState("");
+  const [tags, setTags] = useState("");
   const [username, setUsername] = useContext(TextContext);
   const [path, setPath] = useContext(PathContext);
+  const [flag, setFlag] = useState(true);
+
+
   const onFinish = (values) => {
+    values.tag = str.slice(3,-3);
+    // console.log(values);
     axios.post("/task/save", values).then(function (resp) {
-      if (resp.data == "success") {
+      if (resp.data === "success") {
         setPath("/home");
         history.push("/");
       }
@@ -75,7 +84,16 @@ const PostTask = () => {
           <InputNumber allowClear="true" />
         </Form.Item>
         <Form.Item name="tag" label="Tag">
-          <Input maxLength={100} allowClear="true" />
+          <TagInput maxLength={15}
+                 setStr = {setStr}
+                 setTags = {setTags}
+          />
+        </Form.Item>
+        <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 4 }}
+                   hidden = {flag}
+
+        >
+          <NewTag tags = {tags} setFlag = {setFlag} />
         </Form.Item>
 
         <Form.Item

@@ -1,8 +1,8 @@
-import React, { Fragment, useState, useContext, useEffect } from "react";
-import { Card, Pagination, Button } from "antd";
-import { Link } from "react-router-dom";
+import React, { useState, useContext, useEffect } from "react";
+import { Card, Pagination } from "antd";
 import axios from "../utils/axiosInstance";
 import { TextContext } from "../app";
+import TagShow from "../utils/TagShow";
 import "../../css/personalTask.css";
 
 export default function OngoingApplication(props) {
@@ -16,7 +16,7 @@ export default function OngoingApplication(props) {
   const heig = window.innerHeight < 1100 ? "303px" : "303px";
 
   useEffect(() => {
-    if (props.state != "") {
+    if (props.state !== "") {
       axios
         .get(
           `/ongoingApplication/ongoingJobSearch/1/${size}/${name}/${props.state}`
@@ -50,8 +50,8 @@ export default function OngoingApplication(props) {
   return (
     <div className="outFormD">
       <div className="personalCardsD">
-        {result.map((e) => (
-          <div className="pCards">
+        {result.map((e, index) => (
+          <div className="pCards" key = {e+index}>
             <Card
               title={e.title}
               hoverable="true"
@@ -76,11 +76,12 @@ export default function OngoingApplication(props) {
               style={{ width: 900, margin: 10, height: heig }}
             >
               {/* <p>{e.tag}</p> */}
+                <TagShow tagInput = {e.tag}/>
               <p>${e.price}</p>
               <p>{e.details.substring(0, lenth)}...</p>
               <p>
-                <i>Finished by: </i>
-                <b>{e[3]}</b>
+                <i>Posted by: </i>
+                <b>{e.username}</b>
               </p>
             </Card>
           </div>
@@ -91,7 +92,7 @@ export default function OngoingApplication(props) {
           defaultCurrent={1}
           pageSize={size}
           onChange={(e) => {
-            if (props.state == "") {
+            if (props.state === "") {
               axios
                 .get(`/ongoingApplication/ongoingJob/${e}/${size}/${name}`)
                 .then((res) => {
@@ -113,39 +114,3 @@ export default function OngoingApplication(props) {
   );
 }
 
-// import React, { Fragment, useState, useContext, useEffect } from "react";
-// import { Card } from 'antd';
-// import {Link} from 'react-router-dom';
-// import axios from "axios";
-// import {TextContext} from "../app";
-
-// export default function AppliedTask() {
-//   const [name,setName] = useContext(TextContext);
-//   const [user,setUser] = useState([]);
-//   useEffect(() => {
-//     axios.get(`/ongoingTask/ongoing/${name}`)
-//     .then(res => {
-//       console.log(res.data)
-//         setUser(res.data);
-//     }
-//     )
-//     }, [])
-//   return (
-//     <Fragment>
-//       {
-//         user.map(e=>(
-//         <Card title={e.applicant}
-//         // extra={<Link style ={{display: (e[3]=="0"?"none":"block")}} to={{
-//         //   pathname: "/applicants",
-//         //   state: { from: e }
-//         // }}>More</Link>}
-//         style={{ width: 900, margin : 10 }}>
-//         <p>TaskID: {e.taskID}</p>
-//         <p>{e.details}</p>
-//       </Card>
-
-//       ))
-//       }
-//     </Fragment>
-//   );
-// }

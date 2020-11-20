@@ -1,10 +1,9 @@
-import React, { Fragment, useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import HomeSearch from "./homeSearch";
 import HomeForm from "./HomeForm";
-import axios from "axios";
 import { PathContext } from "../app";
 
-export default function Home(props) {
+export default function Home() {
   const [path, setPath] = useContext(PathContext);
   setPath("/home");
   const [state, setState] = useState("");

@@ -1,12 +1,18 @@
-.site-tag-plus {
-  background: #fff;
-  border-style: dashed;
-}
-.edit-tag {
-  user-select: none;
-}
-.tag-input {
-  width: 78px;
-  margin-right: 8px;
-  vertical-align: top;
+/*.site-tag-plus {*/
+/*  background: #fff;*/
+/*  border-style: dashed;*/
+/*}*/
+/*.edit-tag {*/
+/*  user-select: none;*/
+/*}*/
+/*.tag-input {*/
+/*  width: 78px;*/
+/*  margin-right: 8px;*/
+/*  vertical-align: top;*/
+/*}*/
+
+.anticon.anticon-close.ant-tag-close-icon{
+  /*margin:110px 2px !important;*/
+  /* text-align: center;*/
+  vertical-align: middle;
 }

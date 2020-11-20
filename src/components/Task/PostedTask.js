@@ -1,9 +1,10 @@
-import React, { Fragment, useState, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Card, Pagination } from "antd";
 import { Link } from "react-router-dom";
 import axios from "../utils/axiosInstance";
 import { TextContext } from "../app";
 import "../../css/personalTask.css";
+import TagShow from "../utils/TagShow";
 
 export default function PostedTask(props) {
   const [name, setName] = useContext(TextContext);
@@ -11,10 +12,10 @@ export default function PostedTask(props) {
   const [temTotal, setTemTotal] = useState(0);
   const [result, setResult] = useState([]);
   const [totalRes, setTotalRes] = useState(0);
-  const lenth = window.innerHeight < 1100 ? 3 : 5;
+  const lenth = window.innerHeight < 1100 ? 3 : 4;
 
   useEffect(() => {
-    if (props.state != "") {
+    if (props.state !== "") {
       axios
         .get(`/task/postedSearch/1/${lenth}/${name}/${props.state}`)
         .then(function (resp) {
@@ -44,8 +45,8 @@ export default function PostedTask(props) {
   return (
     <div className="outFormD">
       <div className="personalCardsD">
-        {result.map((e) => (
-          <div className="pCards">
+        {result.map((e, index) => (
+          <div className="pCards" key = {e+index}>
             <Card
               title={e[1]}
               hoverable="true"
@@ -63,9 +64,10 @@ export default function PostedTask(props) {
               style={{ width: 900, margin: 10 }}
             >
               {/* <p>{e.tag}</p> */}
+              <TagShow tagInput = {e[4]}/>
               <p>${e[2]}</p>
               <p>
-                {e[3] == 0
+                {e[3] === 0
                   ? "No one apply right now"
                   : "We have applicants, Click More to check details"}
               </p>
@@ -78,7 +80,7 @@ export default function PostedTask(props) {
           defaultCurrent={1}
           pageSize={lenth}
           onChange={(e) => {
-            if (props.state == "") {
+            if (props.state === "") {
               axios.get(`/task/posted/${e}/${lenth}/${name}`).then((res) => {
                 // res.data.map(e => ({id:e.id, title: e.title}))
                 setResult(res.data);

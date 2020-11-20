@@ -15,7 +15,7 @@ export default function FinishedTask(props) {
   const heig = window.innerHeight < 1100 ? "303px" : "303px";
 
   useEffect(() => {
-    if (props.state != "") {
+    if (props.state !== "") {
       axios
         .get(`/finishedTask/finishedSearch/1/${size}/${name}/${props.state}`)
         .then(function (resp) {
@@ -45,8 +45,8 @@ export default function FinishedTask(props) {
   return (
     <div className="outFormD">
       <div className="personalCardsD">
-        {result.map((e) => (
-          <div className="pCards">
+        {result.map((e,index) => (
+          <div className="pCards" key = {e+index}>
             <Card
               title={e[1]}
               hoverable="true"
@@ -87,7 +87,7 @@ export default function FinishedTask(props) {
           pageSize={size}
           total={totalRes}
           onChange={(e) => {
-            if (props.state == "") {
+            if (props.state === "") {
               axios
                 .get(`/finishedTask/finished/${e}/${size}/${name}`)
                 .then((res) => {

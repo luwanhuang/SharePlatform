@@ -48,7 +48,7 @@ export default function SignUp() {
   const checkUsername = (e) => {
     console.log(e.target.value);
     axios.get(`/user/findByUsername/${e.target.value}`).then((res) => {
-      if (res.data != "") {
+      if (res.data !== "") {
         setMsg({
           validateStatus: "error",
           errorMsg: "The username is exist!",
@@ -64,7 +64,7 @@ export default function SignUp() {
   const checkEmail = (e) => {
     console.log(e.target.value);
     axios.get(`/user/findByEmail/${e.target.value}`).then((res) => {
-      if (res.data != "") {
+      if (res.data !== "") {
         setEmailMsg({
           validateStatus: "error",
           errorMsg: "The Email is exist!",
@@ -81,11 +81,11 @@ export default function SignUp() {
   const onFinish = (values) => {
     // console.log('Received values of form: ', values);
     axios.post("/user/save", values).then(function (resp) {
-      if (resp.data == "existUsername") {
+      if (resp.data === "existUsername") {
         alert("Sorry, the Username is already exist!");
-      } else if (resp.data == "existEmail") {
+      } else if (resp.data === "existEmail") {
         alert("Sorry, the Email is already exist!");
-      } else if (resp.data == "error") {
+      } else if (resp.data === "error") {
         alert("Sorry, something wrong, please register again!");
         window.location.reload();
       } else {

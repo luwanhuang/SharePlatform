@@ -1,5 +1,5 @@
 import { NavLink, useHistory } from "react-router-dom";
-import React, { useState, Fragment, useContext, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { Menu } from "antd";
 import { TextContext, PathContext } from "./app";
 import {
@@ -7,8 +7,6 @@ import {
   HomeOutlined,
   CloudUploadOutlined,
   LoginOutlined,
-  UsergroupAddOutlined,
-  FileAddOutlined,
 } from "@ant-design/icons";
 import "../css/headerMenu.css";
 

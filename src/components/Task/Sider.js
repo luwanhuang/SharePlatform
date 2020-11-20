@@ -12,12 +12,11 @@ import PostedTask from "./PostedTask";
 import OngoingTask from "./OngoingTask";
 import FinishedTask from "./FinishedTask";
 import PSearch from "./search";
-import { useHistory, useLocation, Link } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 
 const { Header, Sider, Content } = Layout;
 
 export default function SiderBar() {
-  let history = useHistory();
   let location = useLocation();
   const [state, setState] = useState("");
   const [collapsed, setCollapsed] = useState(false);
@@ -26,7 +25,7 @@ export default function SiderBar() {
   const toggle = () => {
     setCollapsed((collapsed) => !collapsed);
   };
-  if (location.state == null || location.state.from == 1) {
+  if (location.state == null || location.state.from === 1) {
     return (
       <Layout style={{ height: siderHeight }}>
         <Sider
@@ -109,7 +108,7 @@ export default function SiderBar() {
         </Layout>
       </Layout>
     );
-  } else if (location.state.from == 2) {
+  } else if (location.state.from === 2) {
     return (
       <Layout style={{ height: siderHeight }}>
         <Sider trigger={null} collapsible collapsed={collapsed}>

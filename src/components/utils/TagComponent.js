@@ -3,7 +3,7 @@ import { Tag, Input, Tooltip } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import "../../css/tag.css";
 
-export default function TagComponent() {
+export default function TagComponent(props) {
 
   const [inputVisible, setInputVisible] = useState(false);
   const [tags, setTags] = useState(["Unremovable", "Tag 2", "Tag 3"]);
@@ -23,6 +23,7 @@ export default function TagComponent() {
 
   const handleClose = (removedTag) => {
     setTags(tags.filter((tag) => tag !== removedTag));
+    props.setTags(tags.filter((tag) => tag !== removedTag));
   };
 
   const showInput = () => {
@@ -37,6 +38,7 @@ export default function TagComponent() {
 
     if (inputValue && tags.indexOf(inputValue) === -1) {
       setTags([...tags, inputValue]);
+      props.setTags([...tags, inputValue]);
 
     }
     console.log(tags);
@@ -53,17 +55,18 @@ export default function TagComponent() {
     const newTags = [...tags];
     newTags[editInputIndex] = editInputValue;
     setTags(newTags);
+    props.setTags(newTags);
     setEditInputIndex(-1);
     setEditInputValue("");
   };
-
-  const SaveInputRef = (input) => {
-    const inputRef = useRef(input);
-  };
-
-  const SaveEditInputRef = (input) => {
-    const EditInputRef = useRef(input);
-  };
+  //
+  // const SaveInputRef = (input) => {
+  //   const inputRef = useRef(input);
+  // };
+  //
+  // const SaveEditInputRef = (input) => {
+  //   const EditInputRef = useRef(input);
+  // };
 
   return (
     <>

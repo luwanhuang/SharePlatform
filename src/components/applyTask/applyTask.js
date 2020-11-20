@@ -1,12 +1,12 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import "../../css/applyTask.css";
-import { Form, Input, InputNumber, Button } from "antd";
+import { Form, Input,  Button } from "antd";
 import { useHistory, useLocation } from "react-router-dom";
-import { Typography, Divider } from "antd";
+import { Typography} from "antd";
 import { TextContext, PathContext } from "../app";
 import axios from "../utils/axiosInstance";
 
-const { Title, Paragraph, Text, Link } = Typography;
+const { Title, Paragraph } = Typography;
 
 const layout = {
   labelCol: { span: 2 },
@@ -31,14 +31,14 @@ const ApplyTask = () => {
     setPath("/applyTask");
     const onFinish = (values) => {
       axios.post("/application/save", values).then(function (resp) {
-        if (resp.data == "success") {
+        if (resp.data === "success") {
           history.push("/");
-        } else if (resp.data == "applied") {
+        } else if (resp.data === "applied") {
           alert("Sorry, you already applied!");
         }
       });
     };
-    let flag = name == from.username ? true : false;
+    let flag = name === from.username;
     // axios.post(`/application/findOne/${from.taskID}/${name}`).then(function (resp) {
     //     if (resp.data == "success") {
     //       flag = true;

@@ -1,4 +1,4 @@
-import React, { useState, useContext, Fragment, useEffect } from "react";
+import React, { useState} from "react";
 import { Input } from "antd";
 import { AudioOutlined } from "@ant-design/icons";
 import "../../css/homeSearch.css";

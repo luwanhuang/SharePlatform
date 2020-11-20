@@ -1,7 +1,8 @@
-import React, { Fragment, useContext, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Card, Pagination } from "antd";
 import { Link } from "react-router-dom";
 import axios from "../utils/axiosInstance";
+import TagShow from "../utils/TagShow";
 import "../../css/homeForm.css";
 
 export default function HomeForm(props) {
@@ -16,7 +17,7 @@ export default function HomeForm(props) {
   const heig = window.innerHeight < 1100 ? "237px" : "303px";
 
   useEffect(() => {
-    if (props.state != "") {
+    if (props.state !== "") {
       axios.get(`/task/keyword/1/3/${props.state}`).then(function (resp) {
         setResult(resp.data.content);
       });
@@ -43,8 +44,8 @@ export default function HomeForm(props) {
   return (
     <div className="homeFormD">
       <div className="containCardsD">
-        {result.map((e) => (
-          <div className="cards">
+        {result.map((e, index) => (
+          <div className="cards" key = {e+index}>
             <Card
               style={{ height: heig }}
               hoverable="true"
@@ -60,7 +61,8 @@ export default function HomeForm(props) {
                 </Link>
               }
             >
-              <p>{e.tag}</p>
+              <TagShow tagInput = {e.tag}/>
+              {/*<p>{e.tag}</p>*/}
               <p>${e.price}</p>
               <p>{e.details.substring(0, lenth)}...</p>
             </Card>
@@ -72,7 +74,7 @@ export default function HomeForm(props) {
           defaultCurrent={1}
           pageSize={3}
           onChange={(e) => {
-            if (props.state == "") {
+            if (props.state === "") {
               axios.get(`/task/findAll/${e}/${3}`).then((res) => {
                 // res.data.map(e => ({id:e.id, title: e.title}))
                 console.log(res.data.content);

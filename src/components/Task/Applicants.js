@@ -26,8 +26,8 @@ export default function Applicants() {
       >
         <div>{from[1]}</div>
         <List itemLayout="vertical">
-          {applicants.map((e) => (
-            <List.Item
+          {applicants.map((e, index) => (
+            <List.Item key = {e+index}
               extra={
                 <div width={300}>
                   <Button

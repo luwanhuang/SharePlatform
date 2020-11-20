@@ -1,9 +1,9 @@
-import React, { Fragment, useState, useContext, useEffect } from "react";
-import { Card, Pagination, Button } from "antd";
-import { Link } from "react-router-dom";
+import React, { useState, useContext, useEffect } from "react";
+import { Card, Pagination } from "antd";
 import axios from "../utils/axiosInstance";
 import { TextContext } from "../app";
 import "../../css/personalTask.css";
+import TagShow from "../utils/TagShow";
 
 export default function FinishedApplication(props) {
   const [name, setName] = useContext(TextContext);
@@ -16,7 +16,7 @@ export default function FinishedApplication(props) {
   const heig = window.innerHeight < 1100 ? "303px" : "303px";
 
   useEffect(() => {
-    if (props.state != "") {
+    if (props.state !== "") {
       axios
         .get(
           `/finishedApplication/finishedJobSearch/1/${size}/${name}/${props.state}`
@@ -52,8 +52,9 @@ export default function FinishedApplication(props) {
   return (
     <div className="outFormD">
       <div className="personalCardsD">
-        {result.map((e) => (
-          <div className="pCards">
+        {
+            result.map((e, index) => (
+          <div className="pCards" key = {e+index}>
             <Card
               title={e.title}
               hoverable="true"
@@ -78,11 +79,12 @@ export default function FinishedApplication(props) {
               style={{ width: 900, margin: 10, height: heig }}
             >
               {/* <p>{e.tag}</p> */}
+                <TagShow tagInput = {e.tag}/>
               <p>${e.price}</p>
               <p>{e.details.substring(0, lenth)}...</p>
               <p>
-                <i>Finished by: </i>
-                <b>{e[3]}</b>
+                <i>Posted by: </i>
+                <b>{e.username}</b>
               </p>
             </Card>
           </div>
@@ -93,7 +95,7 @@ export default function FinishedApplication(props) {
           defaultCurrent={1}
           pageSize={size}
           onChange={(e) => {
-            if (props.state == "") {
+            if (props.state === "") {
               axios
                 .get(`/finishedApplication/finishedJob/${e}/${size}/${name}`)
                 .then((res) => {

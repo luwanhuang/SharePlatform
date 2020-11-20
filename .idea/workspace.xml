@@ -1,14 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="7934bd7c-4cd0-42e3-937b-80455cad70ad" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/utils/NewTag.js" afterDir="false" />
+    <list default="true" id="7934bd7c-4cd0-42e3-937b-80455cad70ad" name="Default Changelist" comment="change some unsafety code">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/utils/TagInput.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/utils/TagShow.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Task/Applicants.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Task/Applicants.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Task/FinishedTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Task/FinishedTask.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Task/OngoingTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Task/OngoingTask.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Task/PostedTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Task/PostedTask.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Task/Sider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Task/Sider.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Task/postTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Task/postTask.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/applyTask/Appsider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/applyTask/Appsider.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/applyTask/FinishedApplication.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/applyTask/FinishedApplication.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/applyTask/OngoingApplication.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/applyTask/OngoingApplication.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/applyTask/appliedTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/applyTask/appliedTask.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/applyTask/applyTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/applyTask/applyTask.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/home/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/home/HomeForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/HomeForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/home/homeSearch.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/homeSearch.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/login/SignUp.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/login/SignUp.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/login/Update.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/login/Update.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/login/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/login/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/utils/NewTag.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/utils/NewTag.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/utils/TagComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/utils/TagComponent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/css/tag.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/tag.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -22,8 +72,10 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -46,7 +98,11 @@
       <updated>1605588675680</updated>
       <workItem from="1605588678741" duration="3332000" />
       <workItem from="1605592049072" duration="4492000" />
-      <workItem from="1605596668518" duration="1737000" />
+      <workItem from="1605596668518" duration="4132000" />
+      <workItem from="1605681530551" duration="4818000" />
+      <workItem from="1605698915204" duration="599000" />
+      <workItem from="1605701258175" duration="1402000" />
+      <workItem from="1605748251363" duration="16664000" />
     </task>
     <servers />
   </component>
@@ -64,5 +120,20 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="change some unsafety code" />
+    <option name="LAST_COMMIT_MESSAGE" value="change some unsafety code" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/components/utils/TagShow.js</url>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

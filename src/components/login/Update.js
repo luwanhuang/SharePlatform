@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Form, Input, Tooltip, Checkbox, Button, AutoComplete } from "antd";
-import { QuestionCircleOutlined } from "@ant-design/icons";
+import { Form, Input, Button } from "antd";
 import axios from "../utils/axiosInstance";
 import { useHistory } from "react-router-dom";
 import "../../css/signUp.css";
@@ -33,7 +32,7 @@ export default function Update() {
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
     axios.post("/user/update", values).then(function (resp) {
-      if (resp.data == "success") {
+      if (resp.data === "success") {
         history.push("/");
       }
     });

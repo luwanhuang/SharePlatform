@@ -1,9 +1,9 @@
-import React, { Fragment, useState, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Card, Pagination, Button } from "antd";
-import { Link } from "react-router-dom";
 import axios from "../utils/axiosInstance";
 import { TextContext } from "../app";
 import "../../css/personalTask.css";
+// import TagShow from "../utils/TagShow";
 
 export default function OngoingTask(props) {
   const [name, setName] = useContext(TextContext);
@@ -16,7 +16,7 @@ export default function OngoingTask(props) {
   const heig = window.innerHeight < 1100 ? "303px" : "303px";
 
   useEffect(() => {
-    if (props.state != "") {
+    if (props.state !== "") {
       axios
         .get(`/ongoingTask/ongoingSearch/1/${size}/${name}/${props.state}`)
         .then(function (resp) {
@@ -46,8 +46,8 @@ export default function OngoingTask(props) {
   return (
     <div className="outFormD">
       <div className="personalCardsD">
-        {result.map((e) => (
-          <div className="pCards">
+        {result.map((e,index) => (
+          <div className="pCards" key = {e+index}>
             <Card
               title={e[1]}
               hoverable="true"
@@ -73,6 +73,7 @@ export default function OngoingTask(props) {
               style={{ width: 900, margin: 6, height: heig }}
             >
               {/* <p>{e.tag}</p> */}
+              {/*  <TagShow tagInput = {e[4]}/>*/}
               <p>${e[2]}</p>
               <p>{e[5].substring(0, lenth)}...</p>
               <p>
@@ -88,7 +89,7 @@ export default function OngoingTask(props) {
           defaultCurrent={1}
           pageSize={size}
           onChange={(e) => {
-            if (props.state == "") {
+            if (props.state === "") {
               axios
                 .get(`/ongoingTask/ongoing/${e}/${size}/${name}`)
                 .then((res) => {
