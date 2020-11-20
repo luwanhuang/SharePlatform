@@ -1,7 +1,9 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). <br />
 you can visit v2.0 at youtube: https://youtu.be/dLy6zzbPizQ <br />
 also in azure: https://shareplatformreact.azurewebsites.net/ <br />
-but cloud website may need seconds to start server, the first time visit may not good.
+but cloud website may need seconds to start server, the first time visit may not good. <br />
+the cloud website is still in v2.0.
+
 ## Available Scripts
 
 In the project directory, you can run:

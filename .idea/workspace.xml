@@ -19,34 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7934bd7c-4cd0-42e3-937b-80455cad70ad" name="Default Changelist" comment="change some unsafety code">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/utils/TagInput.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/utils/TagShow.js" afterDir="false" />
+    <list default="true" id="7934bd7c-4cd0-42e3-937b-80455cad70ad" name="Default Changelist" comment="finish tag function, changed unsafe code.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Task/Applicants.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Task/Applicants.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Task/FinishedTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Task/FinishedTask.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Task/OngoingTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Task/OngoingTask.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Task/PostedTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Task/PostedTask.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Task/Sider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Task/Sider.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Task/postTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Task/postTask.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/applyTask/Appsider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/applyTask/Appsider.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/applyTask/FinishedApplication.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/applyTask/FinishedApplication.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/applyTask/OngoingApplication.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/applyTask/OngoingApplication.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/applyTask/appliedTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/applyTask/appliedTask.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/applyTask/applyTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/applyTask/applyTask.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/home/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/Home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/home/HomeForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/HomeForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/home/homeSearch.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/homeSearch.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/login/SignUp.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/login/SignUp.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/login/Update.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/login/Update.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/login/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/login/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/utils/NewTag.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/utils/NewTag.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/utils/TagComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/utils/TagComponent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/css/tag.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/tag.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,8 +77,16 @@
       <workItem from="1605681530551" duration="4818000" />
       <workItem from="1605698915204" duration="599000" />
       <workItem from="1605701258175" duration="1402000" />
-      <workItem from="1605748251363" duration="16664000" />
+      <workItem from="1605748251363" duration="17224000" />
     </task>
+    <task id="LOCAL-00001" summary="finish tag function, changed unsafe code.">
+      <created>1605831718555</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1605831718556</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -123,17 +106,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="change some unsafety code" />
-    <option name="LAST_COMMIT_MESSAGE" value="change some unsafety code" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/components/utils/TagShow.js</url>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="finish tag function, changed unsafe code." />
+    <option name="LAST_COMMIT_MESSAGE" value="finish tag function, changed unsafe code." />
   </component>
 </project>
